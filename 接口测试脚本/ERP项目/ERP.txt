@@ -65,15 +65,19 @@ test
     ${headers}    token
     Create Session    api    ${host}
     ${response}    Get Request    api    /dishesOrg/dishesCategory    headers=${headers}
-    Comment    log    ${response.content}
-    Comment    ${a}    To Json    ${response.content}
-    Comment    ${data1}    Get Tree    ${a}    data.0.categoryName
-    Comment    log    ${data1}
-    Comment    ${categoryName}    Get Tree    ${data}    categoryName
-    Comment    log    ${categoryName}
+    log    ${response.content}
+    ${a}    To Json    ${response.content}
+    ${categoryName}    Get Tree    ${a}    data.0.categoryName
+    ${message}    Get Tree    ${response.content}    message
+    ${sucess}    Get Tree    ${response.content}    success
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+    log    ============打印输出信息===========
+    log    ${categoryName}
     log    ${response.json()['data'][0]['categoryName']}
-    Comment    : FOR    ${item}    IN    @{response.json()['data']}
-    Comment    \    log    ${item}
+    log    ${message}
+    log    ${sucess}
 
 线上扫码对接ERP接口
     ${merchant_head_id}    Set Variable    test

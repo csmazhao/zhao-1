@@ -1,0 +1,42 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../../Resource/DEFINE.txt
+Resource          ../../Resource/keyword.txt
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DateTime
+Library           DatabaseLibrary
+Library           CustomLibrary
+
+*** Test Cases ***
+查看原料分类
+    ${headers}    token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    /matetrialCategoryManage/materialTypeShow    headers=${headers}
+    log    ${response.content}
+    ${a}    To Json    ${response.content}
+    ${message}    Get Tree    ${response.content}    message
+    ${sucess}    Get Tree    ${response.content}    success
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+    log    ============打印输出信息===========
+    log    ${message}
+    log    ${sucess}
+
+新建原料分类
+    ${headers}    token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    /matetrialCategoryManage/addMatetrialType    headers=${headers}
+    log    ${response.content}
+    ${a}    To Json    ${response.content}
+    ${message}    Get Tree    ${response.content}    message
+    ${sucess}    Get Tree    ${response.content}    success
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+    log    ============打印输出信息===========
+    log    ${message}
+    log    ${sucess}

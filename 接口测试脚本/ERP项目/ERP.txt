@@ -1,7 +1,7 @@
 *** Settings ***
 Library           Selenium2Library
-Resource          DEFINE.txt
-Resource          keyword.txt
+Resource          Resource/DEFINE.txt
+Resource          Resource/keyword.txt
 Library           Selenium2Library
 Library           RequestsLibrary
 Library           Collections
@@ -9,6 +9,7 @@ Library           YamlLibrary
 Library           DateTime
 Library           DatabaseLibrary
 Library           CustomLibrary
+Resource          Resource/DEFINE.txt
 
 *** Test Cases ***
 登录

@@ -1,0 +1,31 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../Resource/DEFINE.txt
+Resource          ../Resource/keyword.txt
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DateTime
+Library           DatabaseLibrary
+Library           CustomLibrary
+Resource          Resource/DEFINE.txt
+
+*** Test Cases ***
+线上环境对接接口
+    ${merchant_head_id}    Set Variable    test
+    log    ${merchant_head_id}
+    Create Session    api    http://47.96.84.44:8008
+    ${response}    Get Request    api    erp/merchant/switchErpFlag?sign=6212c427aa5c47c48e8cbde1e0e4ca40&merchantHeadId=${merchant_head_id}&erpFlag=true
+    log    ${response.content}
+    log    ${response.status_code}
+    Should Be Equal As Strings    200    ${response.status_code}
+
+测试环境对接接口
+    ${merchant_head_id}    Set Variable    test
+    log    ${merchant_head_id}
+    Create Session    api    http://47.96.183.152:8008
+    ${response}    Get Request    api    erp/merchant/switchErpFlag?sign=6212c427aa5c47c48e8cbde1e0e4ca40&merchantHeadId=${merchant_head_id}&erpFlag=true
+    log    ${response.content}
+    log    ${response.status_code}
+    Should Be Equal As Strings    200    ${response.status_code}

@@ -1,0 +1,30 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../../Resource/DEFINE.txt
+Resource          ../../Resource/keyword.txt
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DateTime
+Library           DatabaseLibrary
+Library           CustomLibrary
+
+*** Test Cases ***
+查看菜品分类
+    ${headers}    token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    /dishesOrg/dishesCategory    headers=${headers}
+    log    ${response.content}
+    ${a}    To Json    ${response.content}
+    ${categoryName}    Get Tree    ${a}    data.0.categoryName
+    ${message}    Get Tree    ${response.content}    message
+    ${sucess}    Get Tree    ${response.content}    success
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+    log    ============打印输出信息===========
+    log    ${categoryName}
+    log    ${response.json()['data'][0]['categoryName']}
+    log    ${message}
+    log    ${sucess}

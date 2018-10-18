@@ -1,0 +1,177 @@
+*** Settings ***
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           CustomLibrary
+Resource          DEFINE.txt
+Library           DatabaseLibrary
+
+*** Variables ***
+${test}           //*[@id="nav"]/div/button/span
+
+*** Keywords ***
+get_token
+    Comment    ${headers}    Evaluate    eval('{"Content-Type":"application/json;charset=utf-8","Accept":"application/json, text/javascript, */*; q=0.01"}')
+    ${headers}    Create Dictionary    Content-Type=application/json
+    Create Session    api    http://${ip}/tenant
+    ${str}    md 5    ${passwd}
+    ${params}    Evaluate    eval('{"":""}')
+    ${tu}    get Request    api    /api/v1/base/code/getcode    params=${params}    headers=${headers}
+    Should Be Equal As Strings    ${tu.status_code}    200
+    ${authCode}    get tree    ${tu.content}    data.authCode
+    ${data}    Create Dictionary    email=${email}    passwd=${str}    code=uyun    authCode=${authCode}
+    ${addr}    POST Request    api    /api/v1/user/login    data=${data}    headers=${headers}
+    log    ${addr.status_code}
+    log    ${addr.content}
+    ${content}    to json    ${addr.content}
+    ${token}    get tree    ${content}    data.token
+    ${userId}    get tree    ${content}    data.userId
+    ${tenantid}    get tree    ${content}    data.tenantId
+    ${headers2}    eval dict    {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8','Origin':'10.1.11.254','Accept':'application/json','Cookie':'token=${token};userId=${userId};tenantId=${tenantId};1001=1; 1002=1; 1003=1; 1004=1; 1005=1; 1006=1; 1007=1;1008=1'}
+    [Return]    ${headers2}
+
+get_token3
+    ${headers}    Create Dictionary    Content-Type=application/json
+    Create Session    api    http://${ip}/tenant
+    ${str}    md 5    ${passwd}
+    ${data}    Create Dictionary    email=${email}    passwd=${str}
+    ${addr}    POST Request    api    /api/v1/user/login    data=${data}    headers=${headers}
+    log    ${addr.status_code}
+    log    ${addr.content}
+    ${content}    to json    ${addr.content}
+    ${token}    get tree    ${content}    data.token
+    ${userId}    get tree    ${content}    data.userId
+    ${tenantid}    get tree    ${content}    data.tenantId
+    ${headers2}    eval dict    {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8','Accept':'application/json','Cookie':'token=${token};userId=${userId};tenantId=${tenantId};1001=1; 1002=1; 1003=1; 1004=1; 1005=1; 1006=1; 1007=1;1008=1'}
+    [Return]    ${headers2}
+
+ID_Char
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${data}    Set variable    code=accwsy
+    ${response}    Get Request    api    api/v2/config/field/findFieldByCode    headers=${headers}    params=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+    ${q}    get tree    ${response.content}    data.id
+    log    ${q}
+    [Return]    ${q}
+
+GroupId
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${data}    Set variable    groupName=${groupName}
+    ${response}    Get Request    api    api/v2/config/userGroup/getGroupByName    headers=${headers}    params=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+    ${d}    get tree    ${response.content}    data.id
+    log    ${d}
+    [Return]    ${d}
+
+userId
+    ${headers}    get_token
+    ${d}    GroupId
+    log    ${d}
+    Create Session    api    ${host}
+    ${data}    Set variable    groupId=${d}&wd=mazhao
+    ${response}    Get Request    api    api/v2/config/userGroup/getFreeUsers    headers=${headers}    params=${data}
+    ${userid}    get tree    ${response.content}    data.0.userId
+    log    ${userid}
+    [Return]    ${userid}
+
+get_token1
+    ${headers}    Create Dictionary    Content-Type=application/json
+    Create Session    api    http://${ip}/tenant
+    ${str}    md 5    ${passwd}
+    ${params}    Evaluate    eval('{"":""}')
+    ${tu}    get Request    api    /api/v1/base/code/getcode    params=${params}    headers=${headers}
+    Should Be Equal As Strings    ${tu.status_code}    200
+    ${authCode}    get tree    ${tu.content}    data.authCode
+    ${data}    Create Dictionary    email=${email}    passwd=${str}    code=uyun    authCode=${authCode}
+    ${addr}    POST Request    api    /api/v1/user/login    data=${data}    headers=${headers}
+    log    ${addr.status_code}
+    log    ${addr.content}
+    ${content}    to json    ${addr.content}
+    ${token}    get tree    ${content}    data.token
+    ${userId}    get tree    ${content}    data.userId
+    ${tenantid}    get tree    ${content}    data.tenantId
+    ${headers2}    eval dict    {'Content-Type': 'application/json;charset=utf-8','Accept':'application/json','Cookie':'token=${token};userId=${userId};tenantId=${tenantId};1001=1; 1002=1; 1003=1; 1004=1; 1005=1; 1006=1; 1007=1;1008=1'}
+    [Return]    ${headers2}
+
+tenant_login
+    ${headers}    Evaluate    eval('{"Content-Type":"application/json;charset=utf-8","Accept":"application/json, text/javascript, */*; q=0.01"}')
+    ${params}    Evaluate    eval('{"":""}')
+    Create Session    api    ${tenant}
+    ${tu}    get Request    api    tenant/api/v1/base/code/getcode    params=${params}    headers=${headers}
+    Should Be Equal As Strings    ${tu.status_code}    200
+    ${authCode}    get tree    ${tu.content}    data.authCode
+    ${data}    Evaluate    eval('{"email":"${email}","passwd":"${passwd}","code":"uyun","authCode":"${authCode}"}')
+    Create Session    api    ${tenant}
+    ${yang}    post Request    api    tenant/api/v1/user/login    data=${data}    headers=${headers}
+    Should Be Equal As Strings    ${yang.status_code}    200
+    ${token}    get tree    ${yang.content}    data.token
+    ${userId}    get tree    ${yang.content}    data.userId
+    ${tenantId}    get tree    ${yang.content}    data.tenantId
+    ${cookie}    Set Variable    {"Cookie":"token=${token};userId=${userId};tenantId=${tenantId}"}
+    ${header2}    Create Dictionary    Content-Type=application/json    Cookie=userId=${userId};tenantId=${tenantId};token=${token}
+    [Return]    ${header2}
+
+get_modelId
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/config/model/getModelList?pageNum=1&pageSize=12&wd=testtest    headers=${headers}
+    ${modelid}    get tree    ${response.content}    data.list.0.id
+    log    ${modelid}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+    [Return]    ${modelid}
+
+get_diyijieduan
+    ${headers}    get_token
+    ${modelId}    get_modelId
+    Create Session    api    ${host}
+    ${params}    Create Dictionary    modelId=${modelId}
+    ${addr}    get Request    api    /api/v2/config/model/getModelById?modelId=${modelId}    params=${params}    headers=${headers}
+    log    ${addr.status_code}
+    ${message}    get tree    ${addr.content}    message
+    ${tacheList}    get tree    ${addr.content}    data.tacheList
+    ${dataLength}    Get Length    ${tacheList}
+    : FOR    ${i}    IN RANGE    ${dataLength}
+    \    log    ${i}
+    \    ${datatest}    get tree    ${addr.content}    data.tacheList.${i}
+    \    ${name}    get tree    ${datatest}    name
+    \    ${id}    get tree    ${datatest}    id
+    \    Exit For Loop If    '${name}'=='第二阶段'
+    log    ${id}
+    [Return]    ${id}
+
+get_jduserid
+    ${ID}    Keyword.GroupId
+    ${headers}    get_token
+    ${d}    GroupId
+    log    ${d}
+    Create Session    api    ${host}
+    ${data}    Set variable    groupId=${d}&wd=mazhao
+    ${response}    Get Request    api    api/v2/config/userGroup/getUsersByGroupId    headers=${headers}    params=${data}
+    ${userid}    get tree    ${response.content}    data.0.userId
+    [Return]    ${userid}
+
+get_gdid
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${data}    Set variable    wd=${title}
+    ${response}    Get Request    api    /api/v2/ticket/getTicketList    headers=${headers}    params=${data}
+    ${ticketId}    get tree    ${response.content}    data.list.0.ticketId
+    log    ${ticketId}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+    [Return]    ${ticketId}
+
+get_test
+    ${test}    Set Variable    abc
+    [Return]    ${test}
+
+triggerId

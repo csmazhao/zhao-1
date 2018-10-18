@@ -1,0 +1,16 @@
+*** Settings ***
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DatabaseLibrary
+Library           CustomLibrary
+
+*** Test Cases ***
+员工列表
+    log    ret
+    get
+    get
+    ${/}
+
+33

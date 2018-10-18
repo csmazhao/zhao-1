@@ -1,0 +1,20 @@
+*** Settings ***
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           CustomLibrary
+Library           DateTime
+Library           DatabaseLibrary
+
+*** Variables ***
+${host}           http://${ip}/itsm
+${email}          admin@uyun.cn
+${passwd}         Admin@123
+${groupName}      用户组
+${ip}             10.1.11.254
+${title}          接口创建工单
+${tenant}         http://10.1.11.254
+${pwd}            0e7517141fb53f21ee439b355b5a1d0a
+
+*** Keywords ***

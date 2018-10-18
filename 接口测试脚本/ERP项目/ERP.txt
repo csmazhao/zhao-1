@@ -1,0 +1,86 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          DEFINE.txt
+Resource          keyword.txt
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DateTime
+Library           DatabaseLibrary
+Library           CustomLibrary
+
+*** Test Cases ***
+登录
+    ${headers}    Create Dictionary    Content-Type=application/json
+    Create Session    api    ${host}
+    ${str}    md 5    ${password}
+    ${data}    Create Dictionary    phone=${login_phone}    password=${str}
+    ${login}    Post Request    api    /login    data=${data}    headers=${headers}
+    ${message}    Get Tree    ${login.content}    message
+    ${sucess}    Get Tree    ${login.content}    success
+    Should Be Equal As Strings    200    ${login.status_code}
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+
+退出
+    ${headers}    token
+    Create Session    api    ${host}
+    ${login}    Post Request    api    /logout    headers=${headers}
+    log    ${login.content}
+    ${message}    Get Tree    ${login.content}    message
+    ${sucess}    Get Tree    ${login.content}    success
+    Should Be Equal As Strings    200    ${login.status_code}
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+    Comment    sleep    2
+    ${login}    Post Request    api    /logout    headers=${headers}
+    log    ${login.content}
+    ${message}    Get Tree    ${login.content}    message
+    ${sucess}    Get Tree    ${login.content}    success
+    Should Be Equal As Strings    200    ${login.status_code}
+    Should Be Equal As Strings    ${message}    请登录
+    Should Be Equal As Strings    ${sucess}    0
+
+test
+    ${headers}    token
+    Create Session    api    ${host}
+    ${login}    Post Request    api    /logout    headers=${headers}
+    log    ${login.content}
+    ${message}    Get Tree    ${login.content}    message
+    ${sucess}    Get Tree    ${login.content}    success
+    Should Be Equal As Strings    200    ${login.status_code}
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+    sleep    4
+    ${login}    Post Request    api    /logout    headers=${headers}
+    log    ${login.content}
+    ${message}    Get Tree    ${login.content}    message
+    ${sucess}    Get Tree    ${login.content}    success
+    Should Be Equal As Strings    200    ${login.status_code}
+    Should Be Equal As Strings    ${message}    请登录
+    Should Be Equal As Strings    ${sucess}    0
+
+显示菜品分类
+    ${headers}    token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    /dishesOrg/dishesCategory    headers=${headers}
+    Comment    log    ${response.content}
+    Comment    ${a}    To Json    ${response.content}
+    Comment    ${data1}    Get Tree    ${a}    data.0.categoryName
+    Comment    log    ${data1}
+    Comment    ${categoryName}    Get Tree    ${data}    categoryName
+    Comment    log    ${categoryName}
+    log    ${response.json()['data'][0]['categoryName']}
+    Comment    : FOR    ${item}    IN    @{response.json()['data']}
+    Comment    \    log    ${item}
+
+线上扫码对接ERP接口
+    ${merchant_head_id}    Set Variable    test
+    log    ${merchant_head_id}
+    Create Session    api    http://47.96.183.152:8008
+    Comment    Create Session    api    http://47.96.84.44:8008
+    ${response}    Get Request    api    erp/merchant/switchErpFlag?sign=6212c427aa5c47c48e8cbde1e0e4ca40&merchantHeadId=${merchant_head_id}&erpFlag=true
+    log    ${response.content}
+    log    ${response.status_code}
+    Should Be Equal As Strings    200    ${response.status_code}

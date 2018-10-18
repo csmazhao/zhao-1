@@ -1,0 +1,547 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          DEFINE.txt
+Resource          keyword.txt
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DateTime
+Library           DatabaseLibrary
+Library           CustomLibrary
+
+*** Test Cases ***
+创建用户组
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${data}    Set variable    groupName=${groupName}
+    ${response}    Post Request    api    api/v2/config/userGroup/addGroup    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+用户组成员查询
+    ${d}    GroupId
+    log    ${d}
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${params}    Create Dictionary    groupId=${d}
+    ${response}    Get Request    api    api/v2/config/userGroup/getUsersByGroupId    headers=${headers}    params=${params}    pageNum=1
+    ...    pageSize=10
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+用户组添加用户
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${ID}    Keyword.GroupId
+    ${userid}    userId
+    log    ${userid}
+    log    ${ID}
+    ${data}    eval dict    {"groupId": "${ID}", "userIds": ["${userId}"]}
+    ${response}    Post Request    api    api/v2/config/userGroup/addUserToGroup    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+获取用户组列表
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/config/userGroup/getGroupList    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+    ${data}    get tree    ${response.content}    data
+    log    ${data}
+
+移除用户组成员
+    ${ID}    Keyword.GroupId
+    ${headers}    get_token
+    ${d}    GroupId
+    log    ${d}
+    Create Session    api    ${host}
+    ${data}    Set variable    groupId=${d}&wd=mazhao
+    ${response}    Get Request    api    api/v2/config/userGroup/getUsersByGroupId    headers=${headers}    params=${data}
+    ${userid}    get tree    ${response.content}    data.0.userId
+    log    ${userid}
+    ${headers}    get_token1
+    log    ${ID}
+    ${data}    Create Dictionary    groupId=${ID}    userId=${userid}
+    Create Session    api    ${host}
+    ${response}    Post Request    api    api/v2/config/userGroup/removeUser    headers=${headers}    params=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+删除用户组
+    ${ID}    GroupId
+    ${headers}    get_token
+    ${data}    Create Dictionary    groupId=${ID}
+    Create Session    api    ${host}
+    ${response}    Post Request    api    api/v2/config/userGroup/delGroup    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+创建用户组_after
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${data}    Set variable    groupName=${groupName}
+    ${response}    Post Request    api    api/v2/config/userGroup/addGroup    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+用户组添加用户_after
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${ID}    Keyword.GroupId
+    ${userid}    userId
+    log    ${userid}
+    log    ${ID}
+    ${data}    eval dict    {"groupId": "${ID}", "userIds": ["${userId}"]}
+    ${response}    Post Request    api    api/v2/config/userGroup/addUserToGroup    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+创建字段
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${data}    eval dict    { \ \ \ \ "code": "accwsy", \ \ \ \ "defaultValue": "1", \ \ \ \ "maxLength": 15, \ \ \ \ "minLength": 1, \ \ \ \ "name": "账户wsy", \ \ \ \ "params": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "select": 0, \ \ \ \ \ \ \ \ \ \ \ \ "value": 0, \ \ \ \ \ \ \ \ \ \ \ \ "label": "", \ \ \ \ \ \ \ \ \ \ \ \ "color": "" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "type": "singleRowText", \ \ \ \ "typeDesc": "单行文本", \ \ \ \ "validation": "text" }
+    ${response}    Post Request    api    api/v2/config/field/saveField    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+查询所有字段
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/config/field/getFieldList    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+    ${data}    get tree    ${response.content}    data
+    log    ${data}
+
+查询所有字段_输入编码
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${params}    Create Dictionary    wd=accwsy
+    ${response}    Get Request    api    api/v2/config/field/getFieldList    headers=${headers}    params=${params}
+    ${name}    get tree    ${response.content}    data.0.name
+    ${code}    get tree    ${response.content}    data.0.code
+    ${type}    get tree    ${response.content}    data.0.type
+    ${typeDesc}    get tree    ${response.content}    data.0.typeDesc
+    ${validation}    get tree    ${response.content}    data.0.validation
+    ${minLength}    get tree    ${response.content}    data.0.minLength
+    ${maxLength}    get tree    ${response.content}    data.0.maxLength
+    Should Be Equal As Strings    ${name}    账户wsy
+    Should Be Equal As Strings    ${code}    accwsy
+    Should Be Equal As Strings    ${type}    singleRowText
+    Should Be Equal As Strings    ${typeDesc}    单行文本
+    Should Be Equal As Strings    ${validation}    text
+    Should Be Equal As Strings    ${minLength}    1
+    Should Be Equal As Integers    ${maxLength}    15
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+查询某个字段
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${params}    Create Dictionary    code=accwsy
+    ${response}    Get Request    api    api/v2/config/field/findFieldByCode    headers=${headers}    params=${params}
+    ${name}    get tree    ${response.content}    data.name
+    Should Be Equal As Strings    ${name}    账户wsy
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+修改字段
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${ID}    ID_Char
+    log    ${ID}
+    ${data}    eval dict    { "id": "${ID}", \ \ \ \"code": "accwsy", \ \ \ \ "defaultValue": "1", \ \ \ \ "maxLength": 15, \ \ \ \ "minLength": 1, \ \ \ \ "name": "账户test", \ \ \ \ "params": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "select": 0, \ \ \ \ \ \ \ \ \ \ \ \ "value": 0, \ \ \ \ \ \ \ \ \ \ \ \ "label": "", \ \ \ \ \ \ \ \ \ \ \ \ "color": "" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "type": "singleRowText", \ \ \ \ "typeDesc": "单行文本", \ \ \ \ "validation": "text" }
+    ${response}    Post Request    api    api/v2/config/field/updateField    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+删除字段
+    ${headers}    get_token
+    ${ID}    ID_Char
+    log    ${ID}
+    ${data}    Create Dictionary    fieldId=${ID}
+    Create Session    api    ${host}
+    ${response}    Post Request    api    api/v2/config/field/delField    headers=${headers}    params=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+创建字段_after
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${data}    eval dict    { \ \ \ \ "code": "accwsy", \ \ \ \ "defaultValue": "1", \ \ \ \ "maxLength": 15, \ \ \ \ "minLength": 1, \ \ \ \ "name": "账户wsy", \ \ \ \ "params": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "select": 0, \ \ \ \ \ \ \ \ \ \ \ \ "value": 0, \ \ \ \ \ \ \ \ \ \ \ \ "label": "", \ \ \ \ \ \ \ \ \ \ \ \ "color": "" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "type": "singleRowText", \ \ \ \ "typeDesc": "单行文本", \ \ \ \ "validation": "text" }
+    ${response}    Post Request    api    api/v2/config/field/saveField    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+修改字段_after
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${ID}    ID_Char
+    log    ${ID}
+    ${data}    eval dict    { "id": "${ID}", \ \ \ \"code": "accwsy", \ \ \ \ "defaultValue": "1", \ \ \ \ "maxLength": 15, \ \ \ \ "minLength": 1, \ \ \ \ "name": "账户test", \ \ \ \ "params": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "select": 0, \ \ \ \ \ \ \ \ \ \ \ \ "value": 0, \ \ \ \ \ \ \ \ \ \ \ \ "label": "", \ \ \ \ \ \ \ \ \ \ \ \ "color": "" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "type": "singleRowText", \ \ \ \ "typeDesc": "单行文本", \ \ \ \ "validation": "text" }
+    ${response}    Post Request    api    api/v2/config/field/updateField    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+创建流程模型
+    ${ID}    Keyword.GroupId
+    ${headers}    get_token
+    ${d}    GroupId
+    log    ${d}
+    Create Session    api    ${host}
+    ${data}    Set variable    groupId=${d}&wd=mazhao
+    ${response}    Get Request    api    api/v2/config/userGroup/getUsersByGroupId    headers=${headers}    params=${data}
+    ${userid}    get tree    ${response.content}    data.0.userId
+    ${headers}    get_token1
+    ${test}    get_test
+    ${d}    GroupId
+    log    ${userid}
+    log    ${d}
+    ${data}    eval dict    {"name": "testtest","description": "${test}","useable": 1,"builtin": 1,"ruleBegin": "${test}","ruleTime": "1","ruleLength": "4","userGroups": ["${id}"],"userIds":[],"managerList": ["${userid}"],"tacheList": [{"name": "发起流程","description": "","policy": 4,"counterSign": 0,"userList": [],"groupList": [],"fieldList": [{"id":"1f10325ceaf14ca2ad6ab60ee50206df"}, {"id":"6af9ee3b2eb679c08c40fd96668e5fe8"}, {"id":"3d2a947f3fac4ee88422e24a6d59a98e"}, {"id":"dba13fb66aee436fbc699cfad02ac278"}, {"id":"dac14fb62ead436faa699dfad02ac278"}],"builtin": 1,"isEditing": 0}, {"name": "第二阶段","description": "","policy": 1,"counterSign": 0,"userList": [],"groupList": [{"groupId": "3e72f3e3cb39438b9abf5bd86adca058","groupName": "mazhao"}],"fieldList": [{"id":"1f10325ceaf14ca2ad6ab60ee50206df"}, {"id":"6af9ee3b2eb679c08c40fd96668e5fe8"}, {"id":"3d2a947f3fac4ee88422e24a6d59a98e"}, {"id":"dba13fb66aee436fbc699cfad02ac278"}, {"id":"dac14fb62ead436faa699dfad02ac278"}],"builtin": 0,"isEditing": 0}, {"name": "第三阶段","description": "","policy": 1,"counterSign": 0,"userList": [],"groupList": [{"groupId": "3e72f3e3cb39438b9abf5bd86adca058","groupName": "mazhao"}],"fieldList": [{"id":"1f10325ceaf14ca2ad6ab60ee50206df"}, {"id":"6af9ee3b2eb679c08c40fd96668e5fe8"}, {"id":"3d2a947f3fac4ee88422e24a6d59a98e"}, {"id":"dba13fb66aee436fbc699cfad02ac278"}, {"id":"dac14fb62ead436faa699dfad02ac278"}],"builtin": 0,"isEditing": 0}]}
+    Create Session    api    ${host}
+    ${response}    post Request    api    /api/v2/config/model/createModel    data=${data}    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+查看流程模型列表
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/config/model/getModelList?pageNum=1&pageSize=12    headers=${headers}
+    ${data}    get tree    ${response.content}    data
+    log    ${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+启停流程模型
+    ${headers}    get_token
+    ${modelId}    get_modelId
+    ${params}    Create Dictionary    modelId=${modelId}    useable=1
+    Create Session    api    ${host}
+    ${response}    post Request    api    /api/v2/config/model/changeStatus    headers=${headers}    params=${params}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+查询流程模型详情
+    ${headers}    get_token
+    ${modelId}    get_modelId
+    ${params}    Create Dictionary    modelId=${modelId}
+    Create Session    api    ${host}
+    ${response}    Get Request    api    /api/v2/config/model/getModelById    headers=${headers}    params=${params}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+删除流程模型
+    ${headers}    get_token
+    ${modelId}    get_modelId
+    ${params}    Create Dictionary    modelId=${modelId}
+    Create Session    api    ${host}
+    ${response}    post Request    api    /api/v2/config/model/delModel    headers=${headers}    params=${params}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+创建流程模型_after
+    ${ID}    Keyword.GroupId
+    ${headers}    get_token
+    ${d}    GroupId
+    log    ${d}
+    Create Session    api    ${host}
+    ${data}    Set variable    groupId=${d}&wd=mazhao
+    ${response}    Get Request    api    api/v2/config/userGroup/getUsersByGroupId    headers=${headers}    params=${data}
+    ${userid}    get tree    ${response.content}    data.0.userId
+    ${headers}    get_token1
+    ${test}    get_test
+    ${d}    GroupId
+    log    ${userid}
+    log    ${d}
+    ${data}    eval dict    {"name": "testtest","description": "${test}","useable": 1,"builtin": 1,"ruleBegin": "${test}","ruleTime": "1","ruleLength": "4","userGroups": ["${id}"],"userIds":[],"managerList": ["${userid}"],"tacheList": [{"name": "发起流程","description": "","policy": 4,"counterSign": 0,"userList": [],"groupList": [],"fieldList": [{"id":"1f10325ceaf14ca2ad6ab60ee50206df"}, {"id":"6af9ee3b2eb679c08c40fd96668e5fe8"}, {"id":"3d2a947f3fac4ee88422e24a6d59a98e"}, {"id":"dba13fb66aee436fbc699cfad02ac278"}, {"id":"dac14fb62ead436faa699dfad02ac278"}],"builtin": 1,"isEditing": 0}, {"name": "第二阶段","description": "","policy": 1,"counterSign": 0,"userList": [],"groupList": [{"groupId": "3e72f3e3cb39438b9abf5bd86adca058","groupName": "mazhao"}],"fieldList": [{"id":"1f10325ceaf14ca2ad6ab60ee50206df"}, {"id":"6af9ee3b2eb679c08c40fd96668e5fe8"}, {"id":"3d2a947f3fac4ee88422e24a6d59a98e"}, {"id":"dba13fb66aee436fbc699cfad02ac278"}, {"id":"dac14fb62ead436faa699dfad02ac278"}],"builtin": 0,"isEditing": 0}, {"name": "第三阶段","description": "","policy": 1,"counterSign": 0,"userList": [],"groupList": [{"groupId": "3e72f3e3cb39438b9abf5bd86adca058","groupName": "mazhao"}],"fieldList": [{"id":"1f10325ceaf14ca2ad6ab60ee50206df"}, {"id":"6af9ee3b2eb679c08c40fd96668e5fe8"}, {"id":"3d2a947f3fac4ee88422e24a6d59a98e"}, {"id":"dba13fb66aee436fbc699cfad02ac278"}, {"id":"dac14fb62ead436faa699dfad02ac278"}],"builtin": 0,"isEditing": 0}]}
+    Create Session    api    ${host}
+    ${response}    post Request    api    /api/v2/config/model/createModel    data=${data}    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+启停流程模型_after
+    ${headers}    get_token
+    ${modelId}    get_modelId
+    ${params}    Create Dictionary    modelId=${modelId}    useable=1
+    Create Session    api    ${host}
+    ${response}    post Request    api    /api/v2/config/model/changeStatus    headers=${headers}    params=${params}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+工单列表查询
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    /api/v2/ticket/getTicketList    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+工单内置过滤类型
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    /api/v2/ticket/getFilterType    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+流程模型列表查询
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/ticket/getProcessList    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+创建工单
+    ${mx_id}    get_modelId
+    ${jieduan_id}    get_diyijieduan
+    ${yonghu_id}    get_jduserid
+    log    ${mx_id}
+    log    ${jieduan_id}
+    log    ${yonghu_id}
+    ${data}    eval dict    {"form":{"title":"${title}","urgentLevel":"5","ticketDesc": "查看意见查看意见"},"executor":{"${jieduan_id}":["${yonghu_id}"]},"message":{"content":"召哥很帅"}}
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${response}    Post Request    api    /api/v2/ticket/createTicket/${mx_id}    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+创建标题过长工单
+    ${mx_id}    get_modelId
+    ${jieduan_id}    get_diyijieduan
+    ${yonghu_id}    get_jduserid
+    log    ${mx_id}
+    log    ${jieduan_id}
+    log    ${yonghu_id}
+    ${data}    eval dict    {"form":{"title":"接口测试工单1111111111111111111111111111111111111111111111111","urgentLevel":"5","ticketDesc": "查看意见查看意见"},"executor":{"${jieduan_id}":["${yonghu_id}"]},"message":{"content":"召哥很帅"}}
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${response}    Post Request    api    /api/v2/ticket/createTicket/${mx_id}    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+查询工单详情
+    ${gd_id}    get_gdid
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/ticket/getTicketDetal/${gd_id}    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+工单接单
+    ${gd_id}    get_gdid
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${response}    Put Request    api    api/v2/ticket/receiveTicket/${gd_id}    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+工单取回
+    ${gd_id}    get_gdid
+    ${headers}    get_token1
+    Create Session    api    ${host}
+    ${response}    Put Request    api    api/v2/ticket/retrieve/${gd_id}    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+工单回退
+    ${gd_id}    get_gdid
+    ${modelid}    get_modelId
+    ${headers}    get_token1
+    ${data}    eval dict    {"message":{"toUserList": [],"content":"接口测试工单回退"},"ticketId":"${gd_id}","modelId": "${modelid}"}
+    Create Session    api    ${host}
+    ${response}    Put Request    api    api/v2/ticket/rollBack/${gd_id}    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+相关动态查询
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/ticket/getDynamic    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+获取用户被授权模型列表
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/ticket/getModelByUser    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+进入创建工单页
+    ${mx_id}    get_modelId
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/ticket/intoCreateTicket/${mx_id}    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+删除工单_最终
+    ${gd_id}    get_gdid
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Delete Request    api    api/v2/ticket/delTicket/${gd_id}    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+删除用户组_最终
+    ${ID}    GroupId
+    ${headers}    get_token
+    ${data}    Create Dictionary    groupId=${ID}
+    Create Session    api    ${host}
+    ${response}    Post Request    api    api/v2/config/userGroup/delGroup    headers=${headers}    data=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+删除流程模型_最终
+    ${headers}    get_token
+    ${modelId}    get_modelId
+    ${params}    Create Dictionary    modelId=${modelId}
+    Create Session    api    ${host}
+    ${response}    post Request    api    /api/v2/config/model/delModel    headers=${headers}    params=${params}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+删除字段_最终
+    ${headers}    get_token
+    ${ID}    ID_Char
+    log    ${ID}
+    ${data}    Create Dictionary    fieldId=${ID}
+    Create Session    api    ${host}
+    ${response}    Post Request    api    api/v2/config/field/delField    headers=${headers}    params=${data}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${data}    get tree    ${response.content}    data
+    Should Be Equal As Strings    ${data}    None
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+创建触发器
+    ${headers}    get_token1
+    ${data}    eval dict    {"name": "cfq1","description": "cfq1","incident": "created","when": "any","delay": 0,"delayTime": 0,"delayUnit": "HOURS","conditionList": [{"condition": "status","logic": "EQUALS","value": "1"}],"actionList": [{"type": "sendEmail","useable": 0,"title": "cfq1","acceptor": ["resolvor"],"content": "cfq1"}]}
+    Create Session    api    ${host}
+    ${response}    post Request    api    api/v2/config/trigger/createTrigger    data=${data}    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+查询所有触发器
+    ${headers}    get_token1
+    ${params}    Create Dictionary    pageNum=1    pageSize=9    keyword=123
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/config/trigger/getTriggerList    params=${params}    headers=${headers}
+    ${triggerId}    get tree    ${response.content}    data.0.id
+    log    ${triggerId}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+根据status查询级联选项
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/config/trigger/getComparsion/status    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+根据modelId查询级联选项
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/config/trigger/getComparsion/modelId    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+根据urgentLevel查询级联选项
+    ${headers}    get_token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    api/v2/config/trigger/getComparsion/urgentLevel    headers=${headers}
+    Should Be Equal As Strings    200    ${response.status_code}
+    ${errCode}    get tree    ${response.content}    errCode
+    Should Be Equal As Strings    ${errCode}    200
+
+test
+    ${headers}    get_token
+    Comment    Create Session    api    ${host}
+    Comment    ${response}    Get Request    api    api/v2/ticket/getCommentById/afefadcddc554bb1ae91f8d19d2a98de?t=1505375438885    headers=${headers}
+    Comment    Should Be Equal As Strings    200    ${response.status_code}
+    Comment    ${errCode}    get tree    ${response.content}    errCode
+    Comment    Should Be Equal As Strings    ${errCode}    200
+
+test1
+    ${headers}    Create Dictionary    Content-Type=application/json
+    ${params}    Evaluate    eval('{"":""}')
+    ${str}    md 5    ${passwd}
+    Create Session    api    ${tenant}
+    ${tu}    get Request    api    tenant/api/v1/base/code/getcode    params=${params}    headers=${headers}
+    Should Be Equal As Strings    ${tu.status_code}    200
+    ${authCode}    get tree    ${tu.content}    data.authCode
+    ${data}    Evaluate    eval('{"email":"${email}","passwd":"${str}","code":"uyun","authCode":"${authCode}"}')
+    Comment    ${data}    Create Dictionary    email=${email}    passwd=${str}    code=uyun    authCode="${authCode}"
+    Create Session    api    ${tenant}
+    ${yang}    post Request    api    tenant/api/v1/user/login    data=${data}    headers=${headers}
+    Should Be Equal As Strings    ${yang.status_code}    200
+    ${token}    get tree    ${yang.content}    data.token
+    ${userId}    get tree    ${yang.content}    data.userId
+    ${tenantId}    get tree    ${yang.content}    data.tenantId
+    ${cookie}    Set Variable    {"Cookie":"token=${token};userId=${userId};tenantId=${tenantId}"}
+    ${header2}    Create Dictionary    Content-Type=application/json    Cookie=userId=${userId};tenantId=${tenantId};token=${token}
+    Comment
+    Comment    ${headers}    Create Dictionary    Content-Type=application/json
+    Comment    ${str}    md 5    ${passwd}
+    Comment    ${params}    Evaluate    eval('{"":""}')
+    Comment    Create Session    api    http://${ip}/tenant
+    Comment    ${tu}    get Request    api    /api/v1/base/code/getcode    params=${params}    headers=${headers}
+    Comment    Should Be Equal As Strings    ${tu.status_code}    200
+    Comment    ${authCode}    get tree    ${tu.content}    data.authCode
+    Comment    ${data}    Create Dictionary    email=${email}    passwd=${str}    code=uyun    authCode="${authCode}"
+    Comment    ${addr}    POST Request    api    /api/v1/user/login    data=${data}    headers=${headers}
+    Comment    log    ${addr.status_code}
+    Comment    log    ${addr.content}
+    Comment    ${content}    to json    ${addr.content}
+    Comment    ${token}    get tree    ${content}    data.token
+    Comment    ${userId}    get tree    ${content}    data.userId
+    Comment    ${tenantid}    get tree    ${content}    data.tenantId
+    Comment    ${headers2}    eval dict    {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8','Origin':'10.1.11.254','Accept':'application/json','Cookie':'token=${token};userId=${userId};tenantId=${tenantId};1001=1; 1002=1; 1003=1; 1004=1; 1005=1; 1006=1; 1007=1;1008=1'}
+
+qqq
+    log    test
+    log    11
+    log    33

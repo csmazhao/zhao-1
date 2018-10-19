@@ -29,9 +29,10 @@ Library           CustomLibrary
 新建原料分类
     ${headers}    token
     Create Session    api    ${host}
-    ${response}    Get Request    api    /matetrialCategoryManage/addMatetrialType    headers=${headers}
+    Comment    ${data}    eval dict    {"typeCode": "003","name": "test003","parentTypeId": 0}
+    ${data}    Create Dictionary    typeCode=005    name=test005    parentTypeId=0
+    ${response}    post Request    api    /matetrialCategoryManage/addMatetrialType    headers=${headers}    data=${data}
     log    ${response.content}
-    ${a}    To Json    ${response.content}
     ${message}    Get Tree    ${response.content}    message
     ${sucess}    Get Tree    ${response.content}    success
     log    ============参数校验==============

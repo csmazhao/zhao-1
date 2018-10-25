@@ -9,11 +9,10 @@ Library           YamlLibrary
 Library           DateTime
 Library           DatabaseLibrary
 Library           CustomLibrary
-Resource          Resource/DEFINE.txt
 
 *** Test Cases ***
 线上环境对接接口
-    ${merchant_head_id}    Set Variable    test
+    ${merchant_head_id}    Set Variable    2
     log    ${merchant_head_id}
     Create Session    api    http://47.96.84.44:8008
     ${response}    Get Request    api    erp/merchant/switchErpFlag?sign=6212c427aa5c47c48e8cbde1e0e4ca40&merchantHeadId=${merchant_head_id}&erpFlag=true

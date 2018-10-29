@@ -44,23 +44,8 @@ Resource          Resource/DEFINE.txt
     Should Be Equal As Strings    ${sucess}    0
 
 test
-    ${headers}    token
-    Create Session    api    ${host}
-    ${login}    Post Request    api    /logout    headers=${headers}
-    log    ${login.content}
-    ${message}    Get Tree    ${login.content}    message
-    ${sucess}    Get Tree    ${login.content}    success
-    Should Be Equal As Strings    200    ${login.status_code}
-    Should Be Equal As Strings    ${message}    操作成功
-    Should Be Equal As Strings    ${sucess}    1
-    sleep    4
-    ${login}    Post Request    api    /logout    headers=${headers}
-    log    ${login.content}
-    ${message}    Get Tree    ${login.content}    message
-    ${sucess}    Get Tree    ${login.content}    success
-    Should Be Equal As Strings    200    ${login.status_code}
-    Should Be Equal As Strings    ${message}    请登录
-    Should Be Equal As Strings    ${sucess}    0
+    :FOR    ${q}    in range    10
+    \    log    ${q}
 
 显示菜品分类
     ${headers}    token

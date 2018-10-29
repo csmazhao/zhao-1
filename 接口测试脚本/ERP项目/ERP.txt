@@ -44,8 +44,16 @@ Resource          Resource/DEFINE.txt
     Should Be Equal As Strings    ${sucess}    0
 
 test
-    :FOR    ${q}    in range    10
-    \    log    ${q}
+    ${headers}    Create Dictionary    Content-Type=application/json
+    Create Session    api    ${host}
+    ${str}    md 5    ${password}
+    ${data}    Create Dictionary    phone=18900000001    password=25d55ad283aa400af464c76d713c07ad
+    ${login}    Post Request    api    /login    data=${data}    headers=${headers}
+    ${message}    Get Tree    ${login.content}    message
+    ${sucess}    Get Tree    ${login.content}    success
+    Should Be Equal As Strings    200    ${login.status_code}
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
 
 显示菜品分类
     ${headers}    token

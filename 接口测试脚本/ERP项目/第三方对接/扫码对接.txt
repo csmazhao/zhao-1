@@ -21,7 +21,7 @@ Library           CustomLibrary
     Should Be Equal As Strings    200    ${response.status_code}
 
 测试环境对接接口
-    ${merchant_head_id}    Set Variable    15
+    ${merchant_head_id}    Set Variable    119
     log    ${merchant_head_id}
     Create Session    api    http://47.96.183.152:8008
     Comment    Create Session    api    http://47.97.189.84:8008

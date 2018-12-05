@@ -1,7 +1,7 @@
 *** Settings ***
 Library           Selenium2Library
-Resource          ../../Resource/DEFINE.txt
-Resource          ../../Resource/keyword.txt
+Resource          Resource/DEFINE.txt
+Resource          Resource/keyword.txt
 Library           Selenium2Library
 Library           RequestsLibrary
 Library           Collections
@@ -9,9 +9,40 @@ Library           YamlLibrary
 Library           DateTime
 Library           DatabaseLibrary
 Library           CustomLibrary
+Resource          Resource/DEFINE.txt
 
 *** Test Cases ***
-查看原料分类
+登录
+    ${headers}    Create Dictionary    Content-Type=application/json
+    Create Session    api    ${host}
+    ${str}    md 5    ${password}
+    ${data}    Create Dictionary    phone=${login_phone}    password=${str}
+    ${login}    Post Request    api    /login    data=${data}    headers=${headers}
+    ${message}    Get Tree    ${login.content}    message
+    ${sucess}    Get Tree    ${login.content}    success
+    Should Be Equal As Strings    200    ${login.status_code}
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+
+获取data中某个值实例
+    ${headers}    token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    /dishesOrg/dishesCategory    headers=${headers}
+    log    ${response.content}
+    ${a}    To Json    ${response.content}
+    ${categoryName}    Get Tree    ${a}    data.0.categoryName
+    ${message}    Get Tree    ${response.content}    message
+    ${sucess}    Get Tree    ${response.content}    success
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+    log    ============打印输出信息===========
+    log    ${categoryName}
+    log    ${response.json()['data'][0]['categoryName']}
+    log    ${message}
+    log    ${sucess}
+
+get请求模版
     ${headers}    token
     Create Session    api    ${host}
     ${response}    Get Request    api    /matetrialCategoryManage/materialTypeShow    headers=${headers}
@@ -26,7 +57,7 @@ Library           CustomLibrary
     log    ${message}
     log    ${sucess}
 
-新建原料分类
+post请求模版
     ${headers}    token
     Create Session    api    ${host}
     Comment    ${data}    eval dict    {"typeCode": "003","name": "test003","parentTypeId": 0}

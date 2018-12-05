@@ -1,0 +1,23 @@
+*** Settings ***
+Documentation     http://47.98.59.188:8001/showdoc/web/#/18?page_id=1089
+Resource          ../Resource/DEFINE.txt
+Resource          ../Resource/keyword.txt
+
+*** Test Cases ***
+查看进货单列表
+    ${headers}    token
+    Create Session    api    ${host}
+    ${data}    eval dict    {"createTime":["Tue Dec 04 2018 15:27:31 GMT+0800","Thu Dec 13 2018 15:27:31 GMT+0800"],"goodsOrderNo":"","goodsOrderType":"","intoOrgId":"","outOrgId":"","page":"1","state":"","startTime":"2018-12-04","endTime":"2018-12-13"}
+    ${response}    post Request    api    /goods/page    headers=${headers}    data=${data}
+    log    ${response.content}
+    ${returnCode}    Get Tree    ${response.content}    returnCode
+    ${message}    Get Tree    ${response.content}    message
+    ${sucess}    Get Tree    ${response.content}    success
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${returnCode}    0000
+    Should Be Equal As Strings    ${message}    操作成功
+    Should Be Equal As Strings    ${sucess}    1
+    log    ============打印输出信息===========
+    log    ${message}
+    log    ${returnCode}
+    log    ${sucess}

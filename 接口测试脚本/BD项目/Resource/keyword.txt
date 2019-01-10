@@ -12,11 +12,23 @@ Library           DatabaseLibrary
 token
     ${headers}    Create Dictionary    Content-Type=application/json
     Create Session    api    ${host}
-    ${str}    md 5    ${password}
-    ${data}    Create Dictionary    phone=${login_phone}    password=${str}
+    ${data}    Create Dictionary    account=${login_phone}    password=${password}
     log    ${login_phone}
-    log    ${str}
-    ${login}    Post Request    api    /login    data=${data}    headers=${headers}
-    ${token}    get tree    ${login.content}    data.token
-    ${headers2}    eval dict    {'Content-Type': 'application/json;charset=utf-8','token':'${token}'}
+    ${login}    Post Request    api    /user/signIn    data=${data}    headers=${headers}
+    ${token}    get tree    ${login.content}    data.bdToken
+    ${headers2}    eval dict    {'Content-Type': 'application/json;charset=utf-8','bdtoken':'${token}'}
     [Return]    ${headers2}
+
+get
+    [Arguments]    ${url}
+    ${headers}    token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    ${url}    headers=${headers}
+    [Return]    ${response.content}
+
+post
+    [Arguments]    ${url}    ${data}
+    ${headers}    token
+    Create Session    api    ${host}
+    ${response}    post Request    api    ${url}    headers=${headers}    data=${data}
+    [Return]    ${response.content}

@@ -42,7 +42,7 @@ Resource          Resource/DEFINE.txt
     log    ${message}
     log    ${sucess}
 
-get请求模版
+get请求模版01
     ${headers}    token
     Create Session    api    ${host}
     ${response}    Get Request    api    /matetrialCategoryManage/materialTypeShow    headers=${headers}
@@ -57,7 +57,20 @@ get请求模版
     log    ${message}
     log    ${sucess}
 
-post请求模版
+get请求模版02
+    ${response.content}    get    /clue/findClueConversion
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+post请求模版01
     ${headers}    token
     Create Session    api    ${host}
     Comment    ${data}    eval dict    {"typeCode": "003","name": "test003","parentTypeId": 0}
@@ -72,3 +85,18 @@ post请求模版
     log    ============打印输出信息===========
     log    ${message}
     log    ${sucess}
+
+post请求模版02
+    Comment    ${data}    eval dict    {"content": "哈KKK咯额乐扣乐扣地瓜222么了"}
+    ${data}    Create Dictionary    content=5555f搜索手动手动
+    ${response.content}    post    /feedback/save    data=${data}
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Comment    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    Comment    log    ${json['returnCode']}
+    log    ${json['success']}

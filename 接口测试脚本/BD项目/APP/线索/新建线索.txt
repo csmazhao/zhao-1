@@ -1,0 +1,38 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../../Resource/DEFINE.txt
+Resource          ../../Resource/keyword.txt
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DateTime
+Library           DatabaseLibrary
+Library           CustomLibrary
+Resource          Resource/DEFINE.txt
+
+*** Test Cases ***
+新建正常线索
+    ${data}    eval dict    {"merchantType":"3","merchantName":"接口测试02线索","manager":"接口测试","phone":"14222222222","provinceName":"云南省","cityName":"昆明市","areaName":"官渡区","provinceId":"530000","cityId":"530100","areaId":"530111","address":"啦啦啦啦","remark":"嗯弄"}
+    ${response.content}    post    /clue/addClue    data=${data}
+    ${json}    To Json    ${response.content}
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+新建线索--名称为空
+    ${data}    eval dict    {"merchantType":"3","merchantName":"","manager":"接口测试","phone":"14222222222","provinceName":"云南省","cityName":"昆明市","areaName":"官渡区","provinceId":"530000","cityId":"530100","areaId":"530111","address":"啦啦啦啦","remark":"嗯弄"}
+    ${response.content}    post    /clue/addClue    data=${data}
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Not Be Equal As Strings    ${json['returnCode']}    0000
+    Should Not Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}

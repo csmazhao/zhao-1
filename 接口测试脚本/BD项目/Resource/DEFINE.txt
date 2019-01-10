@@ -9,7 +9,7 @@ Library           DatabaseLibrary
 
 *** Variables ***
 ${login_phone}    18900000001
-${password}       12345678
-${host}           https://erp-dev-api.eatjoys.cn
+${password}       666666
+${host}           https://bd-dev-api.eatjoys.cn
 
 *** Keywords ***

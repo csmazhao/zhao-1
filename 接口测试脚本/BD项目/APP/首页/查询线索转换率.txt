@@ -1,0 +1,40 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../../Resource/DEFINE.txt
+Resource          ../../Resource/keyword.txt
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DateTime
+Library           DatabaseLibrary
+Library           CustomLibrary
+Resource          Resource/DEFINE.txt
+
+*** Test Cases ***
+test
+    ${url}    Set Variable    /clue/findClueConversion
+    ${headers}    token
+    Create Session    api    ${host}
+    ${response}    Get Request    api    ${url}    headers=${headers}
+    log    ${response.content}
+    ${a}    To Json    ${response.content}
+    Comment    ${message}    Get Tree    ${response.content}    message
+    ${sucess}    Get Tree    ${response.content}    success
+    Comment    log    ${url}
+    log    ============参数校验==============
+    Comment    Should Be Equal As Strings    ${message}    操作成功
+    Comment    Should Be Equal As Strings    ${sucess}    1
+    Comment    log    ============打印输出信息===========
+    Comment    log    ${message}
+    Comment    log    ${sucess}
+
+22
+    ${response.content}    get    /clue/findClueConversion
+    ${json}    To Json    ${response.content}
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}

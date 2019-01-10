@@ -1,0 +1,22 @@
+*** Settings ***
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           CustomLibrary
+Resource          DEFINE.txt
+Library           DatabaseLibrary
+
+*** Variables ***
+
+*** Keywords ***
+token
+    ${headers}    Create Dictionary    Content-Type=application/json
+    Create Session    api    ${host}
+    ${str}    md 5    ${password}
+    ${data}    Create Dictionary    phone=${login_phone}    password=${str}
+    log    ${login_phone}
+    log    ${str}
+    ${login}    Post Request    api    /login    data=${data}    headers=${headers}
+    ${token}    get tree    ${login.content}    data.token
+    ${headers2}    eval dict    {'Content-Type': 'application/json;charset=utf-8','token':'${token}'}
+    [Return]    ${headers2}

@@ -1,0 +1,129 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../../Resource/DEFINE.txt
+Resource          ../../Resource/keyword.txt
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           Collections
+Library           YamlLibrary
+Library           DateTime
+Library           DatabaseLibrary
+Library           CustomLibrary
+
+*** Test Cases ***
+私有线索--默认排序--第二页查询
+    ${response.content}    get    /clue/page?page=2&type=2&clueName=&dayOrder=asc
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+私有线索--降序排序--输入私有线索查询
+    ${response.content}    get    /clue/page?page=1&type=2&clueName=接口测试03线索&dayOrder=desc
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+私有线索--默认排序--输入公有线索查询
+    ${response.content}    get    /clue/page?page=1&type=2&clueName=接口测试02线索&dayOrder=asc
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+私有线索--默认排序--输入不存在线索查询
+    ${response.content}    get    /clue/page?page=1&type=2&clueName=不存在线索&dayOrder=asc
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+公有线索--降序排序--输入私有线索查询
+    ${response.content}    get    /clue/page?page=1&type=1&clueName=接口测试03线索&dayOrder=desc
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+公有线索--默认排序--输入公有线索查询
+    ${response.content}    get    /clue/page?page=1&type=1&clueName=接口测试02线索&dayOrder=asc
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+公有线索--默认排序--输入不存在线索查询
+    ${response.content}    get    /clue/page?page=1&type=1&clueName=不存在线索&dayOrder=asc
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+私有线索--排序为空
+    ${response.content}    get    /clue/page?page=1&type=2&clueName=&dayOrder=
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}
+
+公有线索--排序为空
+    ${response.content}    get    /clue/page?page=1&type=2&clueName=
+    ${json}    To Json    ${response.content}
+    log    ******************************************************
+    log    【接口返回信息】=${json}
+    log    ******************************************************
+    log    ============参数校验==============
+    Should Be Equal As Strings    ${json['returnCode']}    0000
+    Should Be Equal As Strings    ${json['success']}    True
+    log    ============打印输出信息===========
+    log    ${json['returnCode']}
+    log    ${json['success']}

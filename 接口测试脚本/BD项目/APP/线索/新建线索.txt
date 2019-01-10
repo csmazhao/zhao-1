@@ -9,11 +9,10 @@ Library           YamlLibrary
 Library           DateTime
 Library           DatabaseLibrary
 Library           CustomLibrary
-Resource          Resource/DEFINE.txt
 
 *** Test Cases ***
 新建正常线索
-    ${data}    eval dict    {"merchantType":"3","merchantName":"接口测试02线索","manager":"接口测试","phone":"14222222222","provinceName":"云南省","cityName":"昆明市","areaName":"官渡区","provinceId":"530000","cityId":"530100","areaId":"530111","address":"啦啦啦啦","remark":"嗯弄"}
+    ${data}    eval dict    {"merchantType":"3","merchantName":"接口测试10线索","manager":"接口测试04","phone":"14222226222","provinceName":"云南省","cityName":"昆明市","areaName":"官渡区","provinceId":"530000","cityId":"530100","areaId":"530111","address":"啦啦啦啦","remark":"哈哈哈哈哈哈啊哈啊哈哈哈"}
     ${response.content}    post    /clue/addClue    data=${data}
     ${json}    To Json    ${response.content}
     log    ============参数校验==============

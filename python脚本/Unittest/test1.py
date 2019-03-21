@@ -1,13 +1,12 @@
-class Employee:
-    empCount = 0
-
-    def __init__(self, name, salary):
+class MyClass(object):
+    i = 123
+    def __init__(self,name):
         self.name = name
-        self.salary = salary
-        Employee.empCount +=1
 
-    def displayCount(self):
-        print ("Total Employee %d" % Employee.empCount)
+    def f(self):
+        return 'hello ,' + self.name
 
-    def displayEmployee(self):
-        print ("Name : ", self.name, ", Salary: ", self.salary)
+use_class = MyClass('mazhao')
+
+print('diaoyong',use_class.i)
+print('wwwwwwww',use_class.f())

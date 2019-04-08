@@ -1,26 +1,39 @@
-import threading
+import unittest
+
+class DataProviderSupport(type):
+    def __new__(meta, classname, bases, classDict):
+        # method for creating our test methods
+        def create_test_method(testFunc, args):
+            return lambda self: testFunc(self, *args)
+
+        # look for data provider functions
+        for attrName, attr in classDict.items():
+            if attrName.startswith("dataprovider_"):
+                # find out the corresponding test method
+                testName = attrName[13:]
+                testFunc = classDict[testName]
+
+                # the test method is no longer needed
+                del classDict[testName]
+
+                # generate test method variants based on
+                # data from the data porovider function
+                i = 1
+                for args in attr():
+                    classDict[testName + str(i)] = create_test_method(testFunc, args)
+                    i += 1
+
+        # create the type
+        return type.__new__(meta, classname, bases, classDict)
 
 
-def thread_fun(num):
-    for n in range(0, int(num)):
-        print(" I come from %s, num: %s" % (threading.currentThread().getName(), n))
+class TestStringLength(unittest.TestCase):
+    __metaclass__ = DataProviderSupport
 
+    def dataprovider_test_len_function():  # no self!
+        yield ("abc", 3)
+        yield ("", 0)
+        yield ("a", 1)
 
-def main(thread_num):
-    thread_list = list();
-    # 先创建线程对象
-    for i in range(0, thread_num):
-        thread_name = "thread_%s" % i
-        thread_list.append(threading.Thread(target=thread_fun, name=thread_name, args=(20,)))
-
-    # 启动所有线程
-    for thread in thread_list:
-        thread.start()
-
-    # 主线程中等待所有子线程退出
-    for thread in thread_list:
-        thread.join()
-
-
-if __name__ == "__main__":
-    main(3)
+    def test_len_function(self, astring, expectedLength):
+        self.assertEqual(expectedLength, len(astring))

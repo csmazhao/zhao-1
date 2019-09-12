@@ -12,7 +12,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="API" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="API" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -60,7 +60,7 @@
           <stringProp name="variableNames"></stringProp>
         </CSVDataSet>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="对外接口创建出库单" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="对外接口创建出库单" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -69,7 +69,7 @@
                 <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
 &lt;request&gt;&#xd;
 	&lt;deliveryOrder&gt;&#xd;
-		&lt;deliveryOrderCode&gt;33201909041529&lt;/deliveryOrderCode&gt;&#xd;
+		&lt;deliveryOrderCode&gt;332019090415060&lt;/deliveryOrderCode&gt;&#xd;
 		&lt;orderType&gt;JYCK&lt;/orderType&gt;&#xd;
 		&lt;warehouseCode&gt;test-W&lt;/warehouseCode&gt;&#xd;
 		&lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;&#xd;
@@ -83,7 +83,7 @@
 		&lt;itemAmount&gt;5.80&lt;/itemAmount&gt;&#xd;
 		&lt;freight&gt;0.00&lt;/freight&gt;&#xd;
 		&lt;gotAmount&gt;5.80&lt;/gotAmount&gt;&#xd;
-		&lt;logisticsCode&gt;PDDZTO&lt;/logisticsCode&gt;&#xd;
+		&lt;logisticsCode&gt;ZTOPDD&lt;/logisticsCode&gt;&#xd;
 		&lt;logisticsName&gt;中通快递&lt;/logisticsName&gt;&#xd;
 		&lt;remark&gt;23453&lt;/remark&gt;&#xd;
 		&lt;senderInfo&gt;&#xd;
@@ -150,7 +150,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="标准接口创建出库单" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="标准接口创建出库单" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">

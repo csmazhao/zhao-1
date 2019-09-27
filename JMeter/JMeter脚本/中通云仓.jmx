@@ -1,0 +1,1980 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1 r1853635">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="中通云仓" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="景天上传文件" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="仅一次控制器" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP请求" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie管理器" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json, text/javascript, */*; q=0.01</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Origin</stringProp>
+              <stringProp name="Header.value">http://jt.qa.ops.com</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Cookie</stringProp>
+              <stringProp name="Header.value">JEECGINDEXSTYLE=hplus; i18n_browser_Lang=zh-cn; ZINDEXNUMBER=1990; BROWSER_TYPE=Netscape; JSESSIONID=7C4FDBA2462448FF5D3DD239CBE6994E; Hm_lvt_022571f2c3a94dae8ea2ca12d1acb671=1569390628,1569396161,1569396190,1569396192; Hm_lpvt_022571f2c3a94dae8ea2ca12d1acb671=1569396194</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Host</stringProp>
+              <stringProp name="Header.value">jt.qa.ops.com</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Origin</stringProp>
+              <stringProp name="Header.value">http://jt.qa.ops.com</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Referer</stringProp>
+              <stringProp name="Header.value">http://jt.qa.ops.com/jtFifoWaybillController.do?upload&amp;_=1568807730503</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Requested-With</stringProp>
+              <stringProp name="Header.value">XMLHttpRequest</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP请求默认值" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com/api</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">http://jt.qa.ops.com</stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV 数据文件设置" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ZTO数据导入" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\test\ZTO.xlsx" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\test\ZTO.xlsx</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="warehouseCode" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">0000000067d033ed0167e2de90e01426</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">warehouseCode</stringProp>
+              </elementProp>
+              <elementProp name="customerId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">00000000675e26a50167626003a80022</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">customerId</stringProp>
+              </elementProp>
+              <elementProp name="carrierId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">16cff75740cc11e9985b1866daf39b83</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">carrierId</stringProp>
+              </elementProp>
+              <elementProp name="transporterId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata"></stringProp>
+                <boolProp name="HTTPArgument.use_equals">false</boolProp>
+                <stringProp name="Argument.name">transporterId</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">jt.qa.ops.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/jtFifoWaybillController.do?importExcel</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="YTO数据导入" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\test\YTO.xlsx" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\test\YTO.xlsx</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="warehouseCode" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">0000000067d033ed0167e2de90e01426</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">warehouseCode</stringProp>
+              </elementProp>
+              <elementProp name="customerId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">00000000675e26a50167626003a80022</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">customerId</stringProp>
+              </elementProp>
+              <elementProp name="carrierId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">16cff89c40cc11e9985b1866daf39b83</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">carrierId</stringProp>
+              </elementProp>
+              <elementProp name="transporterId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata"></stringProp>
+                <boolProp name="HTTPArgument.use_equals">false</boolProp>
+                <stringProp name="Argument.name">transporterId</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">jt.qa.ops.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/jtFifoWaybillController.do?importExcel</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="STO数据导入" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\test\STO.xlsx" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\test\STO.xlsx</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="warehouseCode" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">0000000067d033ed0167e2de90e01426</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">warehouseCode</stringProp>
+              </elementProp>
+              <elementProp name="customerId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">00000000675e26a50167626003a80022</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">customerId</stringProp>
+              </elementProp>
+              <elementProp name="carrierId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">16cff7f540cc11e9985b1866daf39b83</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">carrierId</stringProp>
+              </elementProp>
+              <elementProp name="transporterId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata"></stringProp>
+                <boolProp name="HTTPArgument.use_equals">false</boolProp>
+                <stringProp name="Argument.name">transporterId</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">jt.qa.ops.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/jtFifoWaybillController.do?importExcel</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SF数据导入" enabled="false">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\test\SF.xlsx" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:\test\SF.xlsx</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="warehouseCode" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">0000000067d033ed0167e2de90e01426</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">warehouseCode</stringProp>
+              </elementProp>
+              <elementProp name="customerId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">00000000675e26a50167626003a80022</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">customerId</stringProp>
+              </elementProp>
+              <elementProp name="carrierId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">16cff61b40cc11e9985b1866daf39b83</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">carrierId</stringProp>
+              </elementProp>
+              <elementProp name="transporterId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata"></stringProp>
+                <boolProp name="HTTPArgument.use_equals">false</boolProp>
+                <stringProp name="Argument.name">transporterId</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">jt.qa.ops.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/jtFifoWaybillController.do?importExcel</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="所有接口调试" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie管理器" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+          <collectionProp name="HeaderManager.headers"/>
+        </HeaderManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP请求默认值" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com/api</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV 数据文件设置" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="对外接口创建出库单" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
+&lt;request&gt;&#xd;
+	&lt;deliveryOrder&gt;&#xd;
+		&lt;deliveryOrderCode&gt;332019090415063&lt;/deliveryOrderCode&gt;&#xd;
+		&lt;orderType&gt;JYCK&lt;/orderType&gt;&#xd;
+		&lt;warehouseCode&gt;test-W&lt;/warehouseCode&gt;&#xd;
+		&lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;&#xd;
+		&lt;sourcePlatformName&gt;拼多多&lt;/sourcePlatformName&gt;&#xd;
+		&lt;createTime&gt;2019-04-26 11:26:25&lt;/createTime&gt;&#xd;
+		&lt;placeOrderTime&gt;2019-04-24 15:28:20&lt;/placeOrderTime&gt;&#xd;
+		&lt;payTime&gt;2019-04-24 15:29:21&lt;/payTime&gt;&#xd;
+		&lt;operateTime&gt;2019-04-26 08:32:23&lt;/operateTime&gt;&#xd;
+		&lt;shopNick&gt;拼多多店铺&lt;/shopNick&gt;&#xd;
+		&lt;totalAmount&gt;5.80&lt;/totalAmount&gt;&#xd;
+		&lt;itemAmount&gt;5.80&lt;/itemAmount&gt;&#xd;
+		&lt;freight&gt;0.00&lt;/freight&gt;&#xd;
+		&lt;gotAmount&gt;5.80&lt;/gotAmount&gt;&#xd;
+		&lt;logisticsCode&gt;ZTOPDD&lt;/logisticsCode&gt;&#xd;
+		&lt;logisticsName&gt;中通快递&lt;/logisticsName&gt;&#xd;
+		&lt;remark&gt;23453&lt;/remark&gt;&#xd;
+		&lt;senderInfo&gt;&#xd;
+			&lt;name&gt;老家大厨&lt;/name&gt;&#xd;
+			&lt;mobile&gt;13818376630&lt;/mobile&gt;&#xd;
+			&lt;province&gt;湖北省&lt;/province&gt;&#xd;
+			&lt;city&gt;武汉市&lt;/city&gt;&#xd;
+			&lt;area&gt;江岸区&lt;/area&gt;&#xd;
+			&lt;detailAddress&gt;湖北武汉中通转运中心&lt;/detailAddress&gt;&#xd;
+		&lt;/senderInfo&gt;&#xd;
+		&lt;receiverInfo&gt;&#xd;
+			&lt;name&gt;原素&lt;/name&gt;&#xd;
+			&lt;mobile&gt;13955289675&lt;/mobile&gt;&#xd;
+			&lt;province&gt;安徽省&lt;/province&gt;&#xd;
+			&lt;city&gt;蚌埠市&lt;/city&gt;&#xd;
+			&lt;area&gt;其他区&lt;/area&gt;&#xd;
+			&lt;detailAddress&gt;银泰城新地城市广场B6公寓&lt;/detailAddress&gt;&#xd;
+		&lt;/receiverInfo&gt;&#xd;
+		&lt;isUrgency&gt;N&lt;/isUrgency&gt;&#xd;
+		&lt;invoiceFlag&gt;N&lt;/invoiceFlag&gt;&#xd;
+		&lt;sellerMessage&gt;26号发货&lt;/sellerMessage&gt;&#xd;
+		&lt;extendProps&gt; &#xd;
+&#xd;
+			&lt;key4&gt;7&lt;/key4&gt; &#xd;
+		&#xd;
+&#xd;
+		&lt;/extendProps&gt; &#xd;
+		&#xd;
+	&lt;/deliveryOrder&gt;&#xd;
+	&lt;orderLines&gt;&#xd;
+		&lt;orderLine&gt;&#xd;
+			&lt;orderLineNo&gt;1&lt;/orderLineNo&gt;&#xd;
+			&lt;sourceOrderCode&gt;190424-328527381213467&lt;/sourceOrderCode&gt;&#xd;
+			&lt;subSourceOrderCode&gt;190424-3285273812134672521205470&lt;/subSourceOrderCode&gt;&#xd;
+			&lt;ownerCode&gt;YNF&lt;/ownerCode&gt;&#xd;
+			&lt;itemCode&gt;678000&lt;/itemCode&gt;&#xd;
+			&lt;itemId&gt;678000&lt;/itemId&gt;&#xd;
+			&lt;inventoryType&gt;ZP&lt;/inventoryType&gt;&#xd;
+			&lt;itemName&gt;鸭翅&lt;/itemName&gt;&#xd;
+			&lt;planQty&gt;10&lt;/planQty&gt;&#xd;
+			&lt;actualPrice&gt;16.80&lt;/actualPrice&gt;&#xd;
+			&#xd;
+			&#xd;
+		&lt;/orderLine&gt;&#xd;
+		&#xd;
+	&lt;/orderLines&gt;&#xd;
+&lt;/request&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/qimen/wms/in?method=stockout.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key=&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=YNF</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="标准接口创建出库单" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;details&quot;: [&#xd;
+{&#xd;
+&quot;shipmentDetail&quot;: {&#xd;
+&quot;companyCode&quot;: &quot;YNF&quot;,&#xd;
+&quot;itemCode&quot;: &quot;678000&quot;,&#xd;
+&quot;requestQty&quot;: 1.0,&#xd;
+&quot;shipmentCode&quot;: &quot;201905210009&quot;,&#xd;
+&quot;userDef1&quot;: &quot;983419315735&quot;,&#xd;
+&quot;userDef2&quot;: &quot;0102&quot;,&#xd;
+&quot;userDef3&quot;: &quot;42&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+}&#xd;
+}&#xd;
+],&#xd;
+&quot;header&quot;: {&#xd;
+&quot;shipmentHeader&quot;: {&#xd;
+&quot;allocateComplete&quot;: &quot;0&quot;,&#xd;
+&quot;codRequired&quot;: &quot;0&quot;,&#xd;
+&quot;code&quot;: &quot;2019092100012&quot;,&#xd;
+&quot;carrierCode&quot;:&quot;YTO&quot;,&#xd;
+&quot;primaryWaybillCode&quot;:&quot;805970484739481949&quot;,&#xd;
+&quot;companyCode&quot;: &quot;YNF&quot;,&#xd;
+&quot;erpOrderCode&quot;: &quot;T201903210005&quot;,&#xd;
+&quot;erpOrderId&quot;: &quot;6221204&quot;,&#xd;
+&quot;processType&quot;: &quot;NORMAL&quot;,&#xd;
+&quot;remark&quot;: &quot;备注&quot;,&#xd;
+&quot;shipTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToAddress1&quot;: &quot;广东省 惠州市 惠阳区 惠阳经济开发区广东省惠州市惠阳区三和经济开发区龙德科技有限公司&quot;,&#xd;
+&quot;shipToAttentionTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToCity&quot;: &quot;惠州市&quot;,&#xd;
+&quot;shipToDistrict&quot;: &quot;惠阳区&quot;,&#xd;
+&quot;shipToMobile&quot;: &quot;13246130981&quot;,&#xd;
+&quot;shipToName&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToState&quot;: &quot;广东省&quot;,&#xd;
+&quot;shipmentCategory1&quot;: &quot;10000&quot;,&#xd;
+&quot;shipmentNote&quot;: &quot;1564878787&quot;,&#xd;
+&quot;shipmentType&quot;: &quot;PTCK&quot;,&#xd;
+&quot;sourceErp&quot;: &quot;XTEP&quot;,&#xd;
+&quot;userDef6&quot;: &quot;10000&quot;,&#xd;
+&quot;userDef7&quot;: &quot;1&quot;,&#xd;
+&quot;shipmentCategory2&quot;: &quot;C类&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+}&#xd;
+}&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">edibz.crp.ops.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/edi/wms/in?api=wms_shipment_update</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="中通订阅接收接口" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="data" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{     &quot;billCode&quot;: &quot;zto354535002165332999&quot;,     &quot;contacts&quot;: &quot;主账号&quot;,     &quot;contactsTel&quot;: &quot;15175353074&quot;,     &quot;desc&quot;: &quot;【滁州市】  快件已在 【凤阳官塘镇】 签收, 签收人: 代理点代签, 如有疑问请电联:17856082221 / 15056529353, 您的快递已经妥投。风里来雨里去, 只为客官您满意。上有老下有小, 赏个好评好不好？【请在评价快递员处帮忙点亮五颗星星哦~】&quot;,     &quot;orderCode&quot;: &quot;&quot;,     &quot;partnerCode&quot;: &quot;&quot;,     &quot;remark1&quot;: &quot;&quot;,     &quot;remark2&quot;: &quot;&quot;,     &quot;remark3&quot;: &quot;&quot;,     &quot;remark4&quot;: &quot;&quot;,     &quot;remark5&quot;: &quot;&quot;,     &quot;remark6&quot;: &quot;0.0&quot;,     &quot;remark7&quot;: &quot;30548.971&quot;,     &quot;scanCity&quot;: &quot;保定市&quot;,     &quot;scanDate&quot;: &quot;2018-12-27 15:52:00&quot;,     &quot;scanSite&quot;: &quot;曲阳县晓林乡&quot;,     &quot;scanType&quot;: &quot;SIGN&quot; }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">data</stringProp>
+              </elementProp>
+              <elementProp name="company_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">YNF</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">company_id</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/zto/callstatus</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="韵达订阅接收接口" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;request&quot;:&quot;info&quot;,&quot;partnerid&quot;:&quot;test&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;xmldata&quot;:&quot;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48b3JkZXI PHRpbWU MjAxOS0wOS0wMiAwMjowMDowNTwvdGltZT48b3JkZXJpZD4xMTU5MzY3NDE3NjA1MDAxMjE2PC9vcmRlcmlkPjxjaXR5PuWMl S6rOW4gjwvY2l0eT48bWFpbE5vPjMxMDI3MDQ2NTQxMDA8L21haWxObz48ZmFjaWxpdHlOYW1lPuWMl S6rOWIhuaLqOS4reW\/gzwvZmFjaWxpdHlOYW1lPjxhY3Rpb24 QVJSSVZBTDwvYWN0aW9uPjxkZXNjPuOAkOWMl S6rOW4guOAkeW3suWIsOi viDljJfkuqzliIbmi6jkuK3lv4M8L2Rlc2M PC9vcmRlcj4=&quot;,&quot;validation&quot;:&quot;d97244a9687a640b0bafad5922b48af2&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/yunda/callstatus</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="韵达订阅接收接口1" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="request" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">info</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">request</stringProp>
+              </elementProp>
+              <elementProp name="partnerid" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">test</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">partnerid</stringProp>
+              </elementProp>
+              <elementProp name="version" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">1.0</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">version</stringProp>
+              </elementProp>
+              <elementProp name="xmldata" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48b3JkZXI PHRpbWU MjAxOS0wOS0wMiAwMjowMDowNTwvdGltZT48b3JkZXJpZD4xMTU5MzY3NDE3NjA1MDAxMjE2PC9vcmRlcmlkPjxjaXR5PuWMl S6rOW4gjwvY2l0eT48bWFpbE5vPjMxMDI3MDQ2NTQxMDA8L21haWxObz48ZmFjaWxpdHlOYW1lPuWMl S6rOWIhuaLqOS4reW\/gzwvZmFjaWxpdHlOYW1lPjxhY3Rpb24 QVJSSVZBTDwvYWN0aW9uPjxkZXNjPuOAkOWMl S6rOW4guOAkeW3suWIsOi viDljJfkuqzliIbmi6jkuK3lv4M8L2Rlc2M PC9vcmRlcj4=</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">xmldata</stringProp>
+              </elementProp>
+              <elementProp name="validation" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">d97244a9687a640b0bafad5922b48af2</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">validation</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/yunda/callstatus</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="快递鸟订阅接收接口" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="RequestData" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{     &quot;Count&quot;:&quot;1&quot;,     &quot;Data&quot;:[         {             &quot;EBusinessID&quot;:&quot;110000&quot;,             &quot;Location&quot;:&quot;测试数据&quot;,             &quot;LogisticCode&quot;:&quot;kdn444455558788877&quot;,             &quot;ShipperCode&quot;:&quot;YTO&quot;,             &quot;State&quot;:&quot;3&quot;,             &quot;StateEx&quot;:&quot;3&quot;,             &quot;Success&quot;:true,             &quot;Traces&quot;:[                 {                     &quot;Action&quot;:&quot;1&quot;,                     &quot;AcceptStation&quot;:&quot;重庆机场公司-沃之沃云仓-已收件&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 19:03:12&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;重庆机场公司-已发往-重庆转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 19:03:16&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;重庆机场公司-已进行装车扫描&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 19:03:16&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-重庆转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 22:57:47&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-重庆转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 23:07:50&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;重庆转运中心-已发往-河南郑州转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 23:09:54&quot;,                     &quot;Location&quot;:&quot;郑州市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;重庆转运中心-已进行装车扫描&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 23:09:54&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-河南郑州转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 01:53:56&quot;,                     &quot;Location&quot;:&quot;郑州市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;河南郑州转运中心-已发往-河南新乡转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 02:12:18&quot;,                     &quot;Location&quot;:&quot;新乡市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;河南郑州转运中心-已进行装车扫描&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 02:12:18&quot;,                     &quot;Location&quot;:&quot;郑州市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-河南新乡转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 04:51:15&quot;,                     &quot;Location&quot;:&quot;新乡市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;河南新乡转运中心-已发往-河南濮阳公司&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 05:10:30&quot;,                     &quot;Location&quot;:&quot;濮阳市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-河南濮阳公司&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 14:13:47&quot;,                     &quot;Location&quot;:&quot;濮阳市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-河南濮阳公司&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 15:20:39&quot;,                     &quot;Location&quot;:&quot;濮阳市&quot;                 },                 {                     &quot;Action&quot;:&quot;202&quot;,                     &quot;AcceptStation&quot;:&quot;河南濮阳公司-黄埔开发区-派件中&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 15:45:59&quot;,                     &quot;Location&quot;:&quot;濮阳市&quot;                 },                 {                     &quot;Action&quot;:&quot;304&quot;,                     &quot;AcceptStation&quot;:&quot;已签收,签收人是（超派区网点代签）先生/女士，风里来，雨里去，汗也撒泪也流，申通小哥一刻不停留。不求服务惊天下，但求好评动我心，给个好评呗！！如有疑问请联系派件员黄埔开发区，感谢使用申通快递，期待再次为您服务&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 21:57:22&quot;,                     &quot;Location&quot;:&quot;广州市&quot;                 }             ]         }     ],     &quot;EBusinessID&quot;:&quot;110000&quot;,     &quot;PushTime&quot;:&quot;2019-03-25 01:25:32&quot; }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">RequestData</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">api/kuaidiniao/callstatus</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="快递100订阅接收接口" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="param" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{     &quot;status&quot;:&quot;polling&quot;,     &quot;billstatus&quot;:&quot;got&quot;,     &quot;message&quot;:&quot;&quot;,     &quot;autoCheck&quot;:&quot;1&quot;,     &quot;comOld&quot;:&quot;STO1&quot;,     &quot;comNew&quot;:&quot;STO2&quot;,     &quot;lastResult&quot;:{         &quot;message&quot;:&quot;ok&quot;,         &quot;state&quot;:&quot;0&quot;,         &quot;status&quot;:&quot;200&quot;,         &quot;condition&quot;:&quot;F00&quot;,         &quot;ischeck&quot;:&quot;0&quot;,         &quot;com&quot;:&quot;shentong&quot;,         &quot;nu&quot;:&quot;kd100773000097378888&quot;,         &quot;data&quot;:[{            &quot;context&quot;:&quot;上海分拨中心出库&quot;,            &quot;time&quot;:&quot;2012-08-28 16:33:19&quot;,            &quot;ftime&quot;:&quot;2012-08-28 16:33:19&quot;,             &quot;status&quot;:&quot;在途&quot;,             &quot;areaCode&quot;:&quot;310000000000&quot;,             &quot;areaName&quot;:&quot;上海市&quot;         },            { &quot;context&quot;:&quot;上海分拨中心入库&quot;,             &quot;time&quot;:&quot;2012-08-27 23:22:42&quot;,             &quot;ftime&quot;:&quot;2012-08-27 23:22:42&quot;,             &quot;status&quot;:&quot;在途&quot;,             &quot;areaCode&quot;:&quot;310000000000&quot;,             &quot;areaName&quot;:&quot;上海市&quot;         }]     },     &quot;destResult&quot;:{         &quot;message&quot;:&quot;ok&quot;,         &quot;state&quot;:&quot;0&quot;,         &quot;status&quot;:&quot;200&quot;,         &quot;condition&quot;:&quot;F00&quot;,         &quot;ischeck&quot;:&quot;0&quot;     ,         &quot;com&quot;:&quot;speedpost&quot;,         &quot;nu&quot;:&quot;EX015142583SG&quot;,         &quot;data&quot;:[{             &quot;context&quot;:&quot;[01000]Final delivery Delivered to: SLOVESNOV&quot;,             &quot;time&quot;:&quot;2016-05-24 14:00:00&quot;,             &quot;ftime&quot;:&quot;2016-05-24 14:00:00&quot;,             &quot;status&quot;:&quot;签收&quot;,             &quot;areaCode&quot;:null,             &quot;areaName&quot;:null         }]     } }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">param</stringProp>
+              </elementProp>
+              <elementProp name="sign" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">KnouDjnw5365</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">sign</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">api/kd100/callstatus</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="下单接口" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie管理器" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="【接口平台】对外qimen接口创建出库单" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
+&lt;request&gt;&#xd;
+	&lt;deliveryOrder&gt;&#xd;
+		&lt;deliveryOrderCode&gt;332019090415064&lt;/deliveryOrderCode&gt;&#xd;
+		&lt;orderType&gt;JYCK&lt;/orderType&gt;&#xd;
+		&lt;warehouseCode&gt;test-W&lt;/warehouseCode&gt;&#xd;
+		&lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;&#xd;
+		&lt;sourcePlatformName&gt;拼多多&lt;/sourcePlatformName&gt;&#xd;
+		&lt;createTime&gt;2019-04-26 11:26:25&lt;/createTime&gt;&#xd;
+		&lt;placeOrderTime&gt;2019-04-24 15:28:20&lt;/placeOrderTime&gt;&#xd;
+		&lt;payTime&gt;2019-04-24 15:29:21&lt;/payTime&gt;&#xd;
+		&lt;operateTime&gt;2019-04-26 08:32:23&lt;/operateTime&gt;&#xd;
+		&lt;shopNick&gt;拼多多店铺&lt;/shopNick&gt;&#xd;
+		&lt;totalAmount&gt;5.80&lt;/totalAmount&gt;&#xd;
+		&lt;itemAmount&gt;5.80&lt;/itemAmount&gt;&#xd;
+		&lt;freight&gt;0.00&lt;/freight&gt;&#xd;
+		&lt;gotAmount&gt;5.80&lt;/gotAmount&gt;&#xd;
+		&lt;logisticsCode&gt;ZTOPDD&lt;/logisticsCode&gt;&#xd;
+		&lt;logisticsName&gt;中通快递&lt;/logisticsName&gt;&#xd;
+		&lt;remark&gt;23453&lt;/remark&gt;&#xd;
+		&lt;senderInfo&gt;&#xd;
+			&lt;name&gt;老家大厨&lt;/name&gt;&#xd;
+			&lt;mobile&gt;13818376630&lt;/mobile&gt;&#xd;
+			&lt;province&gt;湖北省&lt;/province&gt;&#xd;
+			&lt;city&gt;武汉市&lt;/city&gt;&#xd;
+			&lt;area&gt;江岸区&lt;/area&gt;&#xd;
+			&lt;detailAddress&gt;湖北武汉中通转运中心&lt;/detailAddress&gt;&#xd;
+		&lt;/senderInfo&gt;&#xd;
+		&lt;receiverInfo&gt;&#xd;
+			&lt;name&gt;原素&lt;/name&gt;&#xd;
+			&lt;mobile&gt;13955289675&lt;/mobile&gt;&#xd;
+			&lt;province&gt;安徽省&lt;/province&gt;&#xd;
+			&lt;city&gt;蚌埠市&lt;/city&gt;&#xd;
+			&lt;area&gt;其他区&lt;/area&gt;&#xd;
+			&lt;detailAddress&gt;银泰城新地城市广场B6公寓&lt;/detailAddress&gt;&#xd;
+		&lt;/receiverInfo&gt;&#xd;
+		&lt;isUrgency&gt;N&lt;/isUrgency&gt;&#xd;
+		&lt;invoiceFlag&gt;N&lt;/invoiceFlag&gt;&#xd;
+		&lt;sellerMessage&gt;26号发货&lt;/sellerMessage&gt;&#xd;
+		&lt;extendProps&gt; &#xd;
+&#xd;
+			&lt;key4&gt;7&lt;/key4&gt; &#xd;
+		&#xd;
+&#xd;
+		&lt;/extendProps&gt; &#xd;
+		&#xd;
+	&lt;/deliveryOrder&gt;&#xd;
+	&lt;orderLines&gt;&#xd;
+		&lt;orderLine&gt;&#xd;
+			&lt;orderLineNo&gt;1&lt;/orderLineNo&gt;&#xd;
+			&lt;sourceOrderCode&gt;190424-328527381213467&lt;/sourceOrderCode&gt;&#xd;
+			&lt;subSourceOrderCode&gt;190424-3285273812134672521205470&lt;/subSourceOrderCode&gt;&#xd;
+			&lt;ownerCode&gt;YNF&lt;/ownerCode&gt;&#xd;
+			&lt;itemCode&gt;678000&lt;/itemCode&gt;&#xd;
+			&lt;itemId&gt;678000&lt;/itemId&gt;&#xd;
+			&lt;inventoryType&gt;ZP&lt;/inventoryType&gt;&#xd;
+			&lt;itemName&gt;鸭翅&lt;/itemName&gt;&#xd;
+			&lt;planQty&gt;10&lt;/planQty&gt;&#xd;
+			&lt;actualPrice&gt;16.80&lt;/actualPrice&gt;&#xd;
+			&#xd;
+			&#xd;
+		&lt;/orderLine&gt;&#xd;
+		&#xd;
+	&lt;/orderLines&gt;&#xd;
+&lt;/request&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/qimen/wms/in?method=stockout.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key=&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=YNF</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="【接口平台】对外edi标准接口创建出库单" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;details&quot;: [&#xd;
+{&#xd;
+&quot;shipmentDetail&quot;: {&#xd;
+&quot;companyCode&quot;: &quot;CS0644&quot;,&#xd;
+&quot;itemCode&quot;: &quot;11000&quot;,&#xd;
+&quot;requestQty&quot;: 3.0,&#xd;
+&quot;shipmentCode&quot;: &quot;20190611001511&quot;,&#xd;
+&quot;userDef1&quot;: &quot;983419315735&quot;,&#xd;
+&quot;userDef2&quot;: &quot;0102&quot;,&#xd;
+&quot;userDef3&quot;: &quot;42&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+}&#xd;
+}&#xd;
+],&#xd;
+&quot;header&quot;: {&#xd;
+&quot;shipmentHeader&quot;: {&#xd;
+&quot;allocateComplete&quot;: &quot;0&quot;,&#xd;
+&quot;codRequired&quot;: &quot;0&quot;,&#xd;
+&quot;code&quot;: &quot;201906110015&quot;,&#xd;
+&quot;companyCode&quot;: &quot;CS0644&quot;,&#xd;
+&quot;erpOrderCode&quot;: &quot;T201904110007&quot;,&#xd;
+&quot;erpOrderId&quot;: &quot;6221204&quot;,&#xd;
+&quot;processType&quot;: &quot;NORMAL&quot;,&#xd;
+&quot;remark&quot;: &quot;备注&quot;,&#xd;
+&quot;shipTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToAddress1&quot;: &quot;广东省 惠州市 惠阳区 惠阳经济开发区广东省惠州市惠阳区三和经济开发区龙德科技有限公司&quot;,&#xd;
+&quot;shipToAttentionTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToCity&quot;: &quot;惠州市&quot;,&#xd;
+&quot;shipToDistrict&quot;: &quot;惠阳区&quot;,&#xd;
+&quot;shipToMobile&quot;: &quot;13246130981&quot;,&#xd;
+&quot;shipToName&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToState&quot;: &quot;广东省&quot;,&#xd;
+&quot;shipmentCategory1&quot;: &quot;10000&quot;,&#xd;
+&quot;shipmentNote&quot;: &quot;1564878787&quot;,&#xd;
+&quot;shipmentType&quot;: &quot;销售出库&quot;,&#xd;
+&quot;sourceErp&quot;: &quot;erp&quot;,&#xd;
+&quot;userDef6&quot;: &quot;10000&quot;,&#xd;
+&quot;userDef7&quot;: &quot;1&quot;,&#xd;
+&quot;shipmentCategory2&quot;: &quot;C类&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+}&#xd;
+}&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/edi/wms/in?api=wms.shipment.update&amp;appkey=CS0644&amp;customerId=CS0644</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="【接口平台】对外qimen接口创建发库单" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
+&#xd;
+&lt;request&gt; &#xd;
+  &lt;deliveryOrder&gt; &#xd;
+    &lt;deliveryOrderCode&gt;201906057028&lt;/deliveryOrderCode&gt;  &#xd;
+    &lt;preDeliveryOrderCode&gt;F201906057028&lt;/preDeliveryOrderCode&gt;  &#xd;
+    &lt;preDeliveryOrderId&gt;5241263&lt;/preDeliveryOrderId&gt;  &#xd;
+    &lt;orderType&gt;JYCK&lt;/orderType&gt;  &#xd;
+    &lt;warehouseCode&gt;test-W&lt;/warehouseCode&gt;  &#xd;
+    &lt;orderFlag&gt;COD&lt;/orderFlag&gt;  &#xd;
+    &lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;  &#xd;
+    &lt;sourcePlatformName/&gt;  &#xd;
+    &lt;createTime&gt;2019-01-08 20:26:32&lt;/createTime&gt;  &#xd;
+    &lt;placeOrderTime&gt;2019-01-08 20:26:32&lt;/placeOrderTime&gt;  &#xd;
+    &lt;payTime/&gt;  &#xd;
+    &lt;payNo/&gt;  &#xd;
+    &lt;operatorCode/&gt;  &#xd;
+    &lt;operatorName/&gt;  &#xd;
+    &lt;operateTime&gt;2019-01-08 20:26:32&lt;/operateTime&gt;  &#xd;
+    &lt;shopNick&gt;鞋柜&lt;/shopNick&gt;  &#xd;
+    &lt;sellerNick/&gt;  &#xd;
+    &lt;buyerNick/&gt;  &#xd;
+    &lt;totalAmount/&gt;  &#xd;
+    &lt;itemAmount/&gt;  &#xd;
+    &lt;discountAmount/&gt;  &#xd;
+    &lt;freight/&gt;  &#xd;
+    &lt;arAmount/&gt;  &#xd;
+    &lt;gotAmount/&gt;  &#xd;
+    &lt;serviceFee/&gt;  &#xd;
+    &lt;logisticsCode&gt;SF&lt;/logisticsCode&gt;  &#xd;
+    &lt;logisticsName/&gt;  &#xd;
+    &lt;expressCode/&gt;  &#xd;
+    &lt;logisticsAreaCode/&gt;  &#xd;
+    &lt;deliveryRequirements&gt; &#xd;
+      &lt;scheduleType/&gt;  &#xd;
+      &lt;scheduleDay/&gt;  &#xd;
+      &lt;scheduleStartTime/&gt;  &#xd;
+      &lt;scheduleEndTime/&gt;  &#xd;
+      &lt;deliveryType/&gt; &#xd;
+    &lt;/deliveryRequirements&gt;  &#xd;
+    &lt;senderInfo&gt; &#xd;
+      &lt;company/&gt;  &#xd;
+      &lt;name&gt;测试01&lt;/name&gt;  &#xd;
+      &lt;zipCode/&gt;  &#xd;
+      &lt;tel/&gt;  &#xd;
+      &lt;mobile&gt;18652469335&lt;/mobile&gt;  &#xd;
+      &lt;email/&gt;  &#xd;
+      &lt;countryCode/&gt;  &#xd;
+      &lt;province&gt;浙江省&lt;/province&gt;  &#xd;
+      &lt;city&gt;杭州市&lt;/city&gt;  &#xd;
+      &lt;area/&gt;  &#xd;
+      &lt;town/&gt;  &#xd;
+      &lt;detailAddress&gt;临平街道&lt;/detailAddress&gt; &#xd;
+    &lt;/senderInfo&gt;  &#xd;
+    &lt;receiverInfo&gt; &#xd;
+      &lt;company/&gt;  &#xd;
+      &lt;name&gt;王小二&lt;/name&gt;  &#xd;
+      &lt;zipCode/&gt;  &#xd;
+      &lt;tel/&gt;  &#xd;
+      &lt;mobile&gt;15968547123&lt;/mobile&gt;  &#xd;
+      &lt;email/&gt;  &#xd;
+      &lt;countryCode/&gt;  &#xd;
+      &lt;province&gt;湖南省&lt;/province&gt;  &#xd;
+      &lt;city&gt;长沙市&lt;/city&gt;  &#xd;
+      &lt;area/&gt;  &#xd;
+      &lt;town/&gt;  &#xd;
+      &lt;detailAddress&gt;五一大道&lt;/detailAddress&gt; &#xd;
+    &lt;/receiverInfo&gt;  &#xd;
+    &lt;isUrgency&gt;N&lt;/isUrgency&gt;  &#xd;
+    &lt;invoiceFlag&gt;N&lt;/invoiceFlag&gt;  &#xd;
+    &lt;invoices&gt; &#xd;
+      &lt;invoice&gt; &#xd;
+        &lt;type&gt;INVOICE&lt;/type&gt;  &#xd;
+        &lt;header/&gt;  &#xd;
+        &lt;amount/&gt;  &#xd;
+        &lt;content/&gt;  &#xd;
+        &lt;detail&gt; &#xd;
+          &lt;items&gt; &#xd;
+            &lt;item&gt; &#xd;
+              &lt;itemName/&gt;  &#xd;
+              &lt;unit/&gt;  &#xd;
+              &lt;price/&gt;  &#xd;
+              &lt;quantity/&gt;  &#xd;
+              &lt;amount/&gt; &#xd;
+            &lt;/item&gt; &#xd;
+          &lt;/items&gt; &#xd;
+        &lt;/detail&gt; &#xd;
+      &lt;/invoice&gt; &#xd;
+    &lt;/invoices&gt;  &#xd;
+    &lt;insuranceFlag/&gt;  &#xd;
+    &lt;insurance&gt; &#xd;
+      &lt;type/&gt;  &#xd;
+      &lt;amount/&gt; &#xd;
+    &lt;/insurance&gt;  &#xd;
+    &lt;buyerMessage/&gt;  &#xd;
+    &lt;sellerMessage/&gt;  &#xd;
+    &lt;remark/&gt; &#xd;
+  &lt;/deliveryOrder&gt;  &#xd;
+  &lt;orderLines&gt; &#xd;
+    &lt;orderLine&gt; &#xd;
+      &lt;orderLineNo&gt;213423400&lt;/orderLineNo&gt; &#xd;
+      &lt;sourceOrderCode/&gt;  &#xd;
+      &lt;subSourceOrderCode/&gt;  &#xd;
+      &lt;ownerCode&gt;YNF&lt;/ownerCode&gt;  &#xd;
+      &lt;itemCode&gt;120000&lt;/itemCode&gt;  &#xd;
+      &lt;itemId&gt;&lt;/itemId&gt;  &#xd;
+      &lt;inventoryType&gt;ZP&lt;/inventoryType&gt;  &#xd;
+      &lt;itemName/&gt;  &#xd;
+      &lt;extCode/&gt;  &#xd;
+      &lt;planQty&gt;1&lt;/planQty&gt;  &#xd;
+      &lt;retailPrice/&gt;  &#xd;
+      &lt;actualPrice/&gt;  &#xd;
+      &lt;discountAmount/&gt;  &#xd;
+      &lt;batchCode/&gt;  &#xd;
+      &lt;productDate/&gt;  &#xd;
+      &lt;expireDate/&gt; &#xd;
+    &lt;/orderLine&gt; &#xd;
+     &lt;orderLine&gt; &#xd;
+      &lt;orderLineNo&gt;213423401&lt;/orderLineNo&gt;&#xd;
+      &lt;sourceOrderCode/&gt;  &#xd;
+      &lt;subSourceOrderCode/&gt;  &#xd;
+      &lt;ownerCode&gt;YNF&lt;/ownerCode&gt;  &#xd;
+      &lt;itemCode&gt;130000&lt;/itemCode&gt;  &#xd;
+      &lt;itemId&gt;&lt;/itemId&gt;  &#xd;
+      &lt;inventoryType&gt;ZP&lt;/inventoryType&gt;  &#xd;
+      &lt;itemName/&gt;  &#xd;
+      &lt;extCode/&gt;  &#xd;
+      &lt;planQty&gt;1&lt;/planQty&gt;  &#xd;
+      &lt;retailPrice/&gt;  &#xd;
+      &lt;actualPrice/&gt;  &#xd;
+      &lt;discountAmount/&gt;  &#xd;
+      &lt;batchCode/&gt;  &#xd;
+      &lt;productDate/&gt;  &#xd;
+      &lt;expireDate/&gt; &#xd;
+    &lt;/orderLine&gt; &#xd;
+  &lt;/orderLines&gt; &#xd;
+&lt;/request&gt;&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/qimen/wms/in?method=deliveryorder.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=YNF</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="标准CRP接口创建出库单" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;details&quot;: [&#xd;
+{&#xd;
+&quot;shipmentDetail&quot;: {&#xd;
+&quot;companyCode&quot;: &quot;YNF&quot;,&#xd;
+&quot;itemCode&quot;: &quot;678000&quot;,&#xd;
+&quot;requestQty&quot;: 1.0,&#xd;
+&quot;shipmentCode&quot;: &quot;201905210009&quot;,&#xd;
+&quot;userDef1&quot;: &quot;983419315735&quot;,&#xd;
+&quot;userDef2&quot;: &quot;0102&quot;,&#xd;
+&quot;userDef3&quot;: &quot;42&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+}&#xd;
+}&#xd;
+],&#xd;
+&quot;header&quot;: {&#xd;
+&quot;shipmentHeader&quot;: {&#xd;
+&quot;allocateComplete&quot;: &quot;0&quot;,&#xd;
+&quot;codRequired&quot;: &quot;0&quot;,&#xd;
+&quot;code&quot;: &quot;2019092100012&quot;,&#xd;
+&quot;carrierCode&quot;:&quot;YTO&quot;,&#xd;
+&quot;primaryWaybillCode&quot;:&quot;805970484739481949&quot;,&#xd;
+&quot;companyCode&quot;: &quot;YNF&quot;,&#xd;
+&quot;erpOrderCode&quot;: &quot;T201903210005&quot;,&#xd;
+&quot;erpOrderId&quot;: &quot;6221204&quot;,&#xd;
+&quot;processType&quot;: &quot;NORMAL&quot;,&#xd;
+&quot;remark&quot;: &quot;备注&quot;,&#xd;
+&quot;shipTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToAddress1&quot;: &quot;广东省 惠州市 惠阳区 惠阳经济开发区广东省惠州市惠阳区三和经济开发区龙德科技有限公司&quot;,&#xd;
+&quot;shipToAttentionTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToCity&quot;: &quot;惠州市&quot;,&#xd;
+&quot;shipToDistrict&quot;: &quot;惠阳区&quot;,&#xd;
+&quot;shipToMobile&quot;: &quot;13246130981&quot;,&#xd;
+&quot;shipToName&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToState&quot;: &quot;广东省&quot;,&#xd;
+&quot;shipmentCategory1&quot;: &quot;10000&quot;,&#xd;
+&quot;shipmentNote&quot;: &quot;1564878787&quot;,&#xd;
+&quot;shipmentType&quot;: &quot;PTCK&quot;,&#xd;
+&quot;sourceErp&quot;: &quot;XTEP&quot;,&#xd;
+&quot;userDef6&quot;: &quot;10000&quot;,&#xd;
+&quot;userDef7&quot;: &quot;1&quot;,&#xd;
+&quot;shipmentCategory2&quot;: &quot;C类&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+}&#xd;
+}&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">edibz.crp.ops.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/edi/wms/in?api=wms_shipmnt_update</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="事务控制器" enabled="false">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie管理器" enabled="true">
+            <collectionProp name="CookieManager.cookies"/>
+            <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          </CookieManager>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">origin</stringProp>
+                <stringProp name="Header.value">http://wms.crp.ops.com</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">user=000465; locale=zh; sso=; ssoToken=; ssoApp=; ssoClient=; token=c832207d51d347f08e6dd1fd30e51bba; db=ttx-xwms-test; client=36ad4bcd5c8c475793fedce323999a74</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">wms.crp.ops.com</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-CLIENT</stringProp>
+                <stringProp name="Header.value">36ad4bcd5c8c475793fedce323999a74</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">x-params</stringProp>
+                <stringProp name="Header.value">{&quot;warehouse&quot;:&quot;test-W&quot;,&quot;orgCode&quot;:&quot;GZHSC&quot;,&quot;user&quot;:&quot;000465&quot;}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Token</stringProp>
+                <stringProp name="Header.value">c832207d51d347f08e6dd1fd30e51bba</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-User</stringProp>
+                <stringProp name="Header.value">000465</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Bill</stringProp>
+                <stringProp name="Header.value">shipment_header</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-DB</stringProp>
+                <stringProp name="Header.value">ttx-xwms-test</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name"></stringProp>
+                <stringProp name="Header.value"></stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name"></stringProp>
+                <stringProp name="Header.value"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="创建W订单" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;warehouseCode&quot;: &quot;test-W&quot;,&#xd;
+	&quot;processType&quot;: &quot;NORMAL&quot;,&#xd;
+	&quot;leadingSts&quot;: &quot;100&quot;,&#xd;
+	&quot;trailingSts&quot;: &quot;100&quot;,&#xd;
+	&quot;shipToState&quot;: &quot;山东省&quot;,&#xd;
+	&quot;scheduledShipDate&quot;: null,&#xd;
+	&quot;actualShipDateTime&quot;: null,&#xd;
+	&quot;actualDeliveryDate&quot;: null,&#xd;
+	&quot;created&quot;: &quot;2019-09-05 10:40:51&quot;,&#xd;
+	&quot;lastUpdated&quot;: &quot;2019-09-05 10:41:30&quot;,&#xd;
+	&quot;id&quot;: 5506305,&#xd;
+	&quot;companyCode&quot;: &quot;YNF&quot;,&#xd;
+	&quot;loadId&quot;: 0,&#xd;
+	&quot;code&quot;: &quot;201909051058111&quot;,&#xd;
+	&quot;primaryWaybillCode&quot;: &quot;73223000326346&quot;,&#xd;
+	&quot;erpOrderCode&quot;: &quot;&quot;,&#xd;
+	&quot;erpOrderId&quot;: 0,&#xd;
+	&quot;shipmentType&quot;: &quot;JYCK&quot;,&#xd;
+	&quot;route&quot;: &quot;&quot;,&#xd;
+	&quot;sourcePlatform&quot;: &quot;&quot;,&#xd;
+	&quot;shipTo&quot;: &quot;&quot;,&#xd;
+	&quot;shipToName&quot;: &quot;啊测&quot;,&#xd;
+	&quot;shipToAddress1&quot;: &quot;泰山好地方001&quot;,&#xd;
+	&quot;shipToAddress2&quot;: &quot;&quot;,&#xd;
+	&quot;shipToDistrict&quot;: &quot;&quot;,&#xd;
+	&quot;shipToCity&quot;: &quot;&quot;,&#xd;
+	&quot;shipToCountry&quot;: &quot;&quot;,&#xd;
+	&quot;shipToPostalCode&quot;: &quot;&quot;,&#xd;
+	&quot;shipToAttentionTo&quot;: &quot;测试小哥&quot;,&#xd;
+	&quot;shipToPhoneNum&quot;: &quot;&quot;,&#xd;
+	&quot;shipToMobile&quot;: &quot;18639152655&quot;,&#xd;
+	&quot;shipToEmailAddress&quot;: &quot;&quot;,&#xd;
+	&quot;priority&quot;: 0,&#xd;
+	&quot;deliveryNote&quot;: &quot;&quot;,&#xd;
+	&quot;rejectionNote&quot;: &quot;&quot;,&#xd;
+	&quot;waveId&quot;: &quot;0&quot;,&#xd;
+	&quot;allocateComplete&quot;: &quot;1&quot;,&#xd;
+	&quot;totalWeight&quot;: 0,&#xd;
+	&quot;totalQty&quot;: &quot;0&quot;,&#xd;
+	&quot;totalVolume&quot;: 0,&#xd;
+	&quot;totalLines&quot;: 0,&#xd;
+	&quot;totalContainers&quot;: 0,&#xd;
+	&quot;totalCases&quot;: 0,&#xd;
+	&quot;totalValue&quot;: 0,&#xd;
+	&quot;carrierCode&quot;: &quot;PDDZTO&quot;,&#xd;
+	&quot;carrierService&quot;: &quot;&quot;,&#xd;
+	&quot;backOrderId&quot;: 0,&#xd;
+	&quot;lastWaveId&quot;: &quot;0&quot;,&#xd;
+	&quot;groupNum&quot;: 0,&#xd;
+	&quot;groupIndex&quot;: 0,&#xd;
+	&quot;signValue&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentCategory1&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentCategory2&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentCategory3&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentCategory4&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentCategory5&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentCategory6&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentCategory7&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentCategory8&quot;: &quot;&quot;,&#xd;
+	&quot;shipmentNote&quot;: &quot;&quot;,&#xd;
+	&quot;stopSeq&quot;: 0,&#xd;
+	&quot;codRequired&quot;: &quot;1&quot;,&#xd;
+	&quot;codValue&quot;: 0,&#xd;
+	&quot;allowConsolidate&quot;: &quot;1&quot;,&#xd;
+	&quot;consolidated&quot;: &quot;1&quot;,&#xd;
+	&quot;invoiceRequired&quot;: &quot;1&quot;,&#xd;
+	&quot;invoiceHeader&quot;: &quot;&quot;,&#xd;
+	&quot;invoiceContent&quot;: &quot;&quot;,&#xd;
+	&quot;uploadRequired&quot;: &quot;1&quot;,&#xd;
+	&quot;uploadBatch&quot;: &quot;&quot;,&#xd;
+	&quot;statusFlow&quot;: &quot;&quot;,&#xd;
+	&quot;storeCode&quot;: &quot;&quot;,&#xd;
+	&quot;storeName&quot;: &quot;&quot;,&#xd;
+	&quot;secondWaybillCodes&quot;: &quot;&quot;,&#xd;
+	&quot;shortAddress&quot;: &quot;&quot;,&#xd;
+	&quot;createdBy&quot;: &quot;000465&quot;,&#xd;
+	&quot;lastUpdatedBy&quot;: &quot;000465&quot;,&#xd;
+	&quot;version&quot;: 1,&#xd;
+	&quot;lockCode&quot;: &quot;&quot;,&#xd;
+	&quot;shortPick&quot;: 0,&#xd;
+	&quot;shortAlloc&quot;: 0,&#xd;
+	&quot;remark&quot;: &quot;&quot;,&#xd;
+	&quot;shippingMethod&quot;: &quot;0&quot;,&#xd;
+	&quot;logisticsPaymentMethod&quot;: &quot;0&quot;,&#xd;
+	&quot;isStockout&quot;: 0,&#xd;
+	&quot;pickGoodsModel&quot;: 111,&#xd;
+	&quot;goodsCategory&quot;: 0,&#xd;
+	&quot;insuredAmount&quot;: 2000,&#xd;
+	&quot;encryptionShipToAddress1&quot;: &quot;泰山好地方001&quot;,&#xd;
+	&quot;encryptionShipToAttentionTo&quot;: &quot;测***&quot;,&#xd;
+	&quot;encryptionShipToMobile&quot;: &quot;186****2655&quot;,&#xd;
+	&quot;pended&quot;: false,&#xd;
+	&quot;encryptionShipToName&quot;: &quot;啊*&quot;,&#xd;
+	&quot;standardType&quot;: &quot;&quot;,&#xd;
+	&quot;totalSku&quot;: &quot;0&quot;,&#xd;
+	&quot;entityId&quot;: 5506305,&#xd;
+	&quot;cacheId&quot;: 5506305&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">wms.crp.ops.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/rest/cbt/shipment_header</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="中通订阅接受接口" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">180</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV 数据文件设置" enabled="true">
+          <stringProp name="filename">C:/中通云仓/jmeter/zto.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">billCode,desc,scanType</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="中通订阅接收接口" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="data" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{     &quot;billCode&quot;:&quot;${billCode}&quot;,     &quot;contacts&quot;:&quot;主账号&quot;,     &quot;contactsTel&quot;:&quot;15175353074&quot;,     &quot;desc&quot;:&quot;${desc}&quot;,     &quot;orderCode&quot;:&quot;&quot;,     &quot;partnerCode&quot;:&quot;&quot;,     &quot;remark1&quot;:&quot;&quot;,     &quot;remark2&quot;:&quot;&quot;,     &quot;remark3&quot;:&quot;&quot;,     &quot;remark4&quot;:&quot;&quot;,     &quot;remark5&quot;:&quot;&quot;,     &quot;remark6&quot;:&quot;0.0&quot;,     &quot;remark7&quot;:&quot;30548.971&quot;,     &quot;scanCity&quot;:&quot;测试城市地址0001&quot;,     &quot;scanDate&quot;:&quot;2019-09-05 17:30:38&quot;,     &quot;scanSite&quot;:&quot;测试地址0002&quot;,     &quot;scanType&quot;:&quot;${scanType}&quot; }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">data</stringProp>
+              </elementProp>
+              <elementProp name="company_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">YNF</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">company_id</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">125.124.23.170</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/zto/callstatus</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">1000</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">1000</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+          <collectionProp name="Asserion.test_strings">
+            <stringProp name="257022250">&quot;result&quot;:&quot;success&quot;</stringProp>
+            <stringProp name="605175390">&quot;status&quot;:&quot;true&quot;</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.custom_message"></stringProp>
+          <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">2</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+        <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="响应时间图" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="快递鸟订阅接受接口" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1000</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV 数据文件设置" enabled="true">
+          <stringProp name="filename">C:/中通云仓/jmeter/kb.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">ShipperCode,LogisticCode</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="快递鸟订阅接收接口" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="RequestData" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{     &quot;Count&quot;:&quot;1&quot;,     &quot;Data&quot;:[         {             &quot;EBusinessID&quot;:&quot;110000&quot;,             &quot;Location&quot;:&quot;测试数据&quot;,             &quot;LogisticCode&quot;:&quot;${LogisticCode}&quot;,             &quot;ShipperCode&quot;:&quot;${ShipperCode}&quot;,             &quot;State&quot;:&quot;3&quot;,             &quot;StateEx&quot;:&quot;3&quot;,             &quot;Success&quot;:true,             &quot;Traces&quot;:[                 {                     &quot;Action&quot;:&quot;1&quot;,                     &quot;AcceptStation&quot;:&quot;重庆机场公司-沃之沃云仓-已收件&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 19:03:12&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;重庆机场公司-已发往-重庆转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 19:03:16&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;重庆机场公司-已进行装车扫描&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 19:03:16&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-重庆转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 22:57:47&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-重庆转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 23:07:50&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;重庆转运中心-已发往-河南郑州转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 23:09:54&quot;,                     &quot;Location&quot;:&quot;郑州市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;重庆转运中心-已进行装车扫描&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-03 23:09:54&quot;,                     &quot;Location&quot;:&quot;重庆市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-河南郑州转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 01:53:56&quot;,                     &quot;Location&quot;:&quot;郑州市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;河南郑州转运中心-已发往-河南新乡转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 02:12:18&quot;,                     &quot;Location&quot;:&quot;新乡市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;河南郑州转运中心-已进行装车扫描&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 02:12:18&quot;,                     &quot;Location&quot;:&quot;郑州市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-河南新乡转运中心&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 04:51:15&quot;,                     &quot;Location&quot;:&quot;新乡市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;河南新乡转运中心-已发往-河南濮阳公司&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 05:10:30&quot;,                     &quot;Location&quot;:&quot;濮阳市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-河南濮阳公司&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 14:13:47&quot;,                     &quot;Location&quot;:&quot;濮阳市&quot;                 },                 {                     &quot;Action&quot;:&quot;2&quot;,                     &quot;AcceptStation&quot;:&quot;已到达-河南濮阳公司&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 15:20:39&quot;,                     &quot;Location&quot;:&quot;濮阳市&quot;                 },                 {                     &quot;Action&quot;:&quot;202&quot;,                     &quot;AcceptStation&quot;:&quot;河南濮阳公司-黄埔开发区-派件中&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 15:45:59&quot;,                     &quot;Location&quot;:&quot;濮阳市&quot;                 },                 {                     &quot;Action&quot;:&quot;304&quot;,                     &quot;AcceptStation&quot;:&quot;已签收,签收人是（超派区网点代签）先生/女士，风里来，雨里去，汗也撒泪也流，申通小哥一刻不停留。不求服务惊天下，但求好评动我心，给个好评呗！！如有疑问请联系派件员黄埔开发区，感谢使用申通快递，期待再次为您服务&quot;,                     &quot;AcceptTime&quot;:&quot;2019-07-05 21:57:22&quot;,                     &quot;Location&quot;:&quot;广州市&quot;                 }             ]         }     ],     &quot;EBusinessID&quot;:&quot;110000&quot;,     &quot;PushTime&quot;:&quot;2019-03-25 01:25:32&quot; }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">RequestData</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">api/kuaidiniao/callstatus</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="汇总报告" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">1000</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

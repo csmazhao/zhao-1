@@ -445,7 +445,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="所有接口调试" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="所有接口调试" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -874,7 +874,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="下单接口" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="下单接口" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -912,7 +912,7 @@
 	&lt;deliveryOrder&gt;&#xd;
 		&lt;deliveryOrderCode&gt;332019090415064&lt;/deliveryOrderCode&gt;&#xd;
 		&lt;orderType&gt;JYCK&lt;/orderType&gt;&#xd;
-		&lt;warehouseCode&gt;test-W&lt;/warehouseCode&gt;&#xd;
+		&lt;warehouseCode&gt;570-036C&lt;/warehouseCode&gt;&#xd;
 		&lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;&#xd;
 		&lt;sourcePlatformName&gt;拼多多&lt;/sourcePlatformName&gt;&#xd;
 		&lt;createTime&gt;2019-04-26 11:26:25&lt;/createTime&gt;&#xd;
@@ -959,9 +959,9 @@
 			&lt;orderLineNo&gt;1&lt;/orderLineNo&gt;&#xd;
 			&lt;sourceOrderCode&gt;190424-328527381213467&lt;/sourceOrderCode&gt;&#xd;
 			&lt;subSourceOrderCode&gt;190424-3285273812134672521205470&lt;/subSourceOrderCode&gt;&#xd;
-			&lt;ownerCode&gt;YNF&lt;/ownerCode&gt;&#xd;
-			&lt;itemCode&gt;678000&lt;/itemCode&gt;&#xd;
-			&lt;itemId&gt;678000&lt;/itemId&gt;&#xd;
+			&lt;ownerCode&gt;CS0714&lt;/ownerCode&gt;&#xd;
+			&lt;itemCode&gt;XJ&lt;/itemCode&gt;&#xd;
+			&lt;itemId&gt;XJ&lt;/itemId&gt;&#xd;
 			&lt;inventoryType&gt;ZP&lt;/inventoryType&gt;&#xd;
 			&lt;itemName&gt;鸭翅&lt;/itemName&gt;&#xd;
 			&lt;planQty&gt;10&lt;/planQty&gt;&#xd;
@@ -980,7 +980,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/api/qimen/wms/in?method=stockout.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key=&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=YNF</stringProp>
+          <stringProp name="HTTPSampler.path">/api/qimen/wms/in?method=stockout.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key=&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=CS0714</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1520,7 +1520,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="中通订阅接受接口" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="中通订阅接受接口" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>

@@ -910,7 +910,7 @@
                 <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
 &lt;request&gt;&#xd;
 	&lt;deliveryOrder&gt;&#xd;
-		&lt;deliveryOrderCode&gt;332019090415064&lt;/deliveryOrderCode&gt;&#xd;
+		&lt;deliveryOrderCode&gt;332019090415066&lt;/deliveryOrderCode&gt;&#xd;
 		&lt;orderType&gt;JYCK&lt;/orderType&gt;&#xd;
 		&lt;warehouseCode&gt;570-036C&lt;/warehouseCode&gt;&#xd;
 		&lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;&#xd;
@@ -924,8 +924,8 @@
 		&lt;itemAmount&gt;5.80&lt;/itemAmount&gt;&#xd;
 		&lt;freight&gt;0.00&lt;/freight&gt;&#xd;
 		&lt;gotAmount&gt;5.80&lt;/gotAmount&gt;&#xd;
-		&lt;logisticsCode&gt;ZTOPDD&lt;/logisticsCode&gt;&#xd;
-		&lt;logisticsName&gt;中通快递&lt;/logisticsName&gt;&#xd;
+		&lt;logisticsCode&gt;&lt;/logisticsCode&gt;&#xd;
+		&lt;logisticsName&gt;&lt;/logisticsName&gt;&#xd;
 		&lt;remark&gt;23453&lt;/remark&gt;&#xd;
 		&lt;senderInfo&gt;&#xd;
 			&lt;name&gt;老家大厨&lt;/name&gt;&#xd;
@@ -938,10 +938,10 @@
 		&lt;receiverInfo&gt;&#xd;
 			&lt;name&gt;原素&lt;/name&gt;&#xd;
 			&lt;mobile&gt;13955289675&lt;/mobile&gt;&#xd;
-			&lt;province&gt;安徽省&lt;/province&gt;&#xd;
-			&lt;city&gt;蚌埠市&lt;/city&gt;&#xd;
-			&lt;area&gt;其他区&lt;/area&gt;&#xd;
-			&lt;detailAddress&gt;银泰城新地城市广场B6公寓&lt;/detailAddress&gt;&#xd;
+			&lt;province&gt;河南省&lt;/province&gt;&#xd;
+			&lt;city&gt;焦作市&lt;/city&gt;&#xd;
+			&lt;area&gt;修武县&lt;/area&gt;&#xd;
+			&lt;detailAddress&gt;城关镇修武一中&lt;/detailAddress&gt;&#xd;
 		&lt;/receiverInfo&gt;&#xd;
 		&lt;isUrgency&gt;N&lt;/isUrgency&gt;&#xd;
 		&lt;invoiceFlag&gt;N&lt;/invoiceFlag&gt;&#xd;
@@ -963,7 +963,7 @@
 			&lt;itemCode&gt;XJ&lt;/itemCode&gt;&#xd;
 			&lt;itemId&gt;XJ&lt;/itemId&gt;&#xd;
 			&lt;inventoryType&gt;ZP&lt;/inventoryType&gt;&#xd;
-			&lt;itemName&gt;鸭翅&lt;/itemName&gt;&#xd;
+			&lt;itemName&gt;香蕉&lt;/itemName&gt;&#xd;
 			&lt;planQty&gt;10&lt;/planQty&gt;&#xd;
 			&lt;actualPrice&gt;16.80&lt;/actualPrice&gt;&#xd;
 			&#xd;

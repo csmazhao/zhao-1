@@ -467,7 +467,7 @@
           <collectionProp name="HeaderManager.headers"/>
         </HeaderManager>
         <hashTree/>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP请求默认值" enabled="false">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP请求默认值" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -493,7 +493,7 @@
           <stringProp name="variableNames"></stringProp>
         </CSVDataSet>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="对外接口创建出库单" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="对外接口创建出库单" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -502,7 +502,7 @@
                 <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
 &lt;request&gt;&#xd;
 	&lt;deliveryOrder&gt;&#xd;
-		&lt;deliveryOrderCode&gt;332019090415063&lt;/deliveryOrderCode&gt;&#xd;
+		&lt;deliveryOrderCode&gt;332019090415062&lt;/deliveryOrderCode&gt;&#xd;
 		&lt;orderType&gt;JYCK&lt;/orderType&gt;&#xd;
 		&lt;warehouseCode&gt;test-W&lt;/warehouseCode&gt;&#xd;
 		&lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;&#xd;
@@ -689,32 +689,6 @@
         </HTTPSamplerProxy>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="韵达订阅接收接口" enabled="false">
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;request&quot;:&quot;info&quot;,&quot;partnerid&quot;:&quot;test&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;xmldata&quot;:&quot;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48b3JkZXI PHRpbWU MjAxOS0wOS0wMiAwMjowMDowNTwvdGltZT48b3JkZXJpZD4xMTU5MzY3NDE3NjA1MDAxMjE2PC9vcmRlcmlkPjxjaXR5PuWMl S6rOW4gjwvY2l0eT48bWFpbE5vPjMxMDI3MDQ2NTQxMDA8L21haWxObz48ZmFjaWxpdHlOYW1lPuWMl S6rOWIhuaLqOS4reW\/gzwvZmFjaWxpdHlOYW1lPjxhY3Rpb24 QVJSSVZBTDwvYWN0aW9uPjxkZXNjPuOAkOWMl S6rOW4guOAkeW3suWIsOi viDljJfkuqzliIbmi6jkuK3lv4M8L2Rlc2M PC9vcmRlcj4=&quot;,&quot;validation&quot;:&quot;d97244a9687a640b0bafad5922b48af2&quot;}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol">http</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">api/yunda/callstatus</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="韵达订阅接收接口1" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="request" elementType="HTTPArgument">
@@ -901,6 +875,36 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV 数据文件设置" enabled="true">
+          <stringProp name="filename">C:/中通云仓/jmeter/省市区.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">省,市,区</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="OrderCode随机变量" enabled="true">
+          <stringProp name="maximumValue">10000000000</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat"></stringProp>
+          <boolProp name="perThread">false</boolProp>
+          <stringProp name="randomSeed"></stringProp>
+          <stringProp name="variableName">OrderCode</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="planQty随机变量" enabled="true">
+          <stringProp name="variableName">planQty</stringProp>
+          <stringProp name="outputFormat"></stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="maximumValue">25</stringProp>
+          <stringProp name="randomSeed"></stringProp>
+          <boolProp name="perThread">false</boolProp>
+        </RandomVariableConfig>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="【接口平台】对外qimen接口创建出库单" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -910,7 +914,7 @@
                 <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
 &lt;request&gt;&#xd;
 	&lt;deliveryOrder&gt;&#xd;
-		&lt;deliveryOrderCode&gt;332019090415084&lt;/deliveryOrderCode&gt;&#xd;
+		&lt;deliveryOrderCode&gt;${OrderCode}&lt;/deliveryOrderCode&gt;&#xd;
 		&lt;orderType&gt;JYCK&lt;/orderType&gt;&#xd;
 		&lt;warehouseCode&gt;570-036C&lt;/warehouseCode&gt;&#xd;
 		&lt;sourcePlatformCode&gt;&lt;/sourcePlatformCode&gt;&#xd;
@@ -924,7 +928,7 @@
 		&lt;itemAmount&gt;5.80&lt;/itemAmount&gt;&#xd;
 		&lt;freight&gt;0.00&lt;/freight&gt;&#xd;
 		&lt;gotAmount&gt;5.80&lt;/gotAmount&gt;&#xd;
-		&lt;logisticsCode&gt;YTO&lt;/logisticsCode&gt;&#xd;
+		&lt;logisticsCode&gt;ZTO&lt;/logisticsCode&gt;&#xd;
 		&lt;logisticsName&gt;顺丰快递&lt;/logisticsName&gt;&#xd;
 		&lt;remark&gt;23453&lt;/remark&gt;&#xd;
 		&lt;senderInfo&gt;&#xd;
@@ -932,15 +936,15 @@
 			&lt;mobile&gt;13818376630&lt;/mobile&gt;&#xd;
 			&lt;province&gt;湖北省&lt;/province&gt;&#xd;
 			&lt;city&gt;武汉市&lt;/city&gt;&#xd;
-			&lt;area&gt;江岸区&lt;/area&gt;&#xd;
+			&lt;area&gt;拱墅区&lt;/area&gt;&#xd;
 			&lt;detailAddress&gt;湖北武汉中通转运中心&lt;/detailAddress&gt;&#xd;
 		&lt;/senderInfo&gt;&#xd;
 		&lt;receiverInfo&gt;&#xd;
 			&lt;name&gt;原素&lt;/name&gt;&#xd;
 			&lt;mobile&gt;13955289675&lt;/mobile&gt;&#xd;
-			&lt;province&gt;浙江省&lt;/province&gt;&#xd;
-			&lt;city&gt;杭州市&lt;/city&gt;&#xd;
-			&lt;area&gt;&lt;/area&gt;&#xd;
+			&lt;province&gt;${省}&lt;/province&gt;&#xd;
+			&lt;city&gt;${市}&lt;/city&gt;&#xd;
+			&lt;area&gt;${区}&lt;/area&gt;&#xd;
 			&lt;detailAddress&gt;西湖大道01&lt;/detailAddress&gt;&#xd;
 		&lt;/receiverInfo&gt;&#xd;
 		&lt;isUrgency&gt;N&lt;/isUrgency&gt;&#xd;
@@ -964,7 +968,7 @@
 			&lt;itemId&gt;XJ&lt;/itemId&gt;&#xd;
 			&lt;inventoryType&gt;ZP&lt;/inventoryType&gt;&#xd;
 			&lt;itemName&gt;香蕉&lt;/itemName&gt;&#xd;
-			&lt;planQty&gt;10&lt;/planQty&gt;&#xd;
+			&lt;planQty&gt;${planQty}&lt;/planQty&gt;&#xd;
 			&lt;actualPrice&gt;16.80&lt;/actualPrice&gt;&#xd;
 			&#xd;
 			&#xd;
@@ -1001,14 +1005,14 @@
 &quot;details&quot;: [&#xd;
 {&#xd;
 &quot;shipmentDetail&quot;: {&#xd;
-&quot;companyCode&quot;: &quot;CS0644&quot;,&#xd;
-&quot;itemCode&quot;: &quot;11000&quot;,&#xd;
+&quot;companyCode&quot;: &quot;CS0714&quot;,&#xd;
+&quot;itemCode&quot;: &quot;XJ&quot;,&#xd;
 &quot;requestQty&quot;: 3.0,&#xd;
-&quot;shipmentCode&quot;: &quot;20190611001511&quot;,&#xd;
+&quot;shipmentCode&quot;: &quot;201906110016&quot;,&#xd;
 &quot;userDef1&quot;: &quot;983419315735&quot;,&#xd;
 &quot;userDef2&quot;: &quot;0102&quot;,&#xd;
 &quot;userDef3&quot;: &quot;42&quot;,&#xd;
-&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+&quot;warehouseCode&quot;: &quot;570-036C&quot;&#xd;
 }&#xd;
 }&#xd;
 ],&#xd;
@@ -1016,8 +1020,8 @@
 &quot;shipmentHeader&quot;: {&#xd;
 &quot;allocateComplete&quot;: &quot;0&quot;,&#xd;
 &quot;codRequired&quot;: &quot;0&quot;,&#xd;
-&quot;code&quot;: &quot;201906110015&quot;,&#xd;
-&quot;companyCode&quot;: &quot;CS0644&quot;,&#xd;
+&quot;code&quot;: &quot;201906110016&quot;,&#xd;
+&quot;companyCode&quot;: &quot;CS0714&quot;,&#xd;
 &quot;erpOrderCode&quot;: &quot;T201904110007&quot;,&#xd;
 &quot;erpOrderId&quot;: &quot;6221204&quot;,&#xd;
 &quot;processType&quot;: &quot;NORMAL&quot;,&#xd;
@@ -1025,19 +1029,20 @@
 &quot;shipTo&quot;: &quot;覃将&quot;,&#xd;
 &quot;shipToAddress1&quot;: &quot;广东省 惠州市 惠阳区 惠阳经济开发区广东省惠州市惠阳区三和经济开发区龙德科技有限公司&quot;,&#xd;
 &quot;shipToAttentionTo&quot;: &quot;覃将&quot;,&#xd;
-&quot;shipToCity&quot;: &quot;惠州市&quot;,&#xd;
-&quot;shipToDistrict&quot;: &quot;惠阳区&quot;,&#xd;
+&quot;shipToCity&quot;: &quot;杭州市&quot;,&#xd;
+&quot;shipToDistrict&quot;: &quot;拱墅区&quot;,&#xd;
 &quot;shipToMobile&quot;: &quot;13246130981&quot;,&#xd;
 &quot;shipToName&quot;: &quot;覃将&quot;,&#xd;
-&quot;shipToState&quot;: &quot;广东省&quot;,&#xd;
+&quot;shipToState&quot;: &quot;浙江省&quot;,&#xd;
 &quot;shipmentCategory1&quot;: &quot;10000&quot;,&#xd;
 &quot;shipmentNote&quot;: &quot;1564878787&quot;,&#xd;
-&quot;shipmentType&quot;: &quot;销售出库&quot;,&#xd;
+&quot;shipmentType&quot;: &quot;JYCK&quot;,&#xd;
+&quot;carrierCode&quot;:&quot;ZTO1&quot;,&#xd;
 &quot;sourceErp&quot;: &quot;erp&quot;,&#xd;
 &quot;userDef6&quot;: &quot;10000&quot;,&#xd;
 &quot;userDef7&quot;: &quot;1&quot;,&#xd;
 &quot;shipmentCategory2&quot;: &quot;C类&quot;,&#xd;
-&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+&quot;warehouseCode&quot;: &quot;570-036C&quot;&#xd;
 }&#xd;
 }&#xd;
 }</stringProp>
@@ -1049,7 +1054,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/api/edi/wms/in?api=wms.shipment.update&amp;appkey=CS0644&amp;customerId=CS0644</stringProp>
+          <stringProp name="HTTPSampler.path">/api/edi/wms/in?api=wms.shipment.update&amp;appkey=58125946&amp;customerId=CS0714</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1074,7 +1079,7 @@
     &lt;preDeliveryOrderCode&gt;F201906057028&lt;/preDeliveryOrderCode&gt;  &#xd;
     &lt;preDeliveryOrderId&gt;5241263&lt;/preDeliveryOrderId&gt;  &#xd;
     &lt;orderType&gt;JYCK&lt;/orderType&gt;  &#xd;
-    &lt;warehouseCode&gt;test-W&lt;/warehouseCode&gt;  &#xd;
+    &lt;warehouseCode&gt;570-036C&lt;/warehouseCode&gt;  &#xd;
     &lt;orderFlag&gt;COD&lt;/orderFlag&gt;  &#xd;
     &lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;  &#xd;
     &lt;sourcePlatformName/&gt;  &#xd;
@@ -1095,7 +1100,7 @@
     &lt;arAmount/&gt;  &#xd;
     &lt;gotAmount/&gt;  &#xd;
     &lt;serviceFee/&gt;  &#xd;
-    &lt;logisticsCode&gt;SF&lt;/logisticsCode&gt;  &#xd;
+    &lt;logisticsCode&gt;ZTO2&lt;/logisticsCode&gt;  &#xd;
     &lt;logisticsName/&gt;  &#xd;
     &lt;expressCode/&gt;  &#xd;
     &lt;logisticsAreaCode/&gt;  &#xd;
@@ -1128,8 +1133,9 @@
       &lt;mobile&gt;15968547123&lt;/mobile&gt;  &#xd;
       &lt;email/&gt;  &#xd;
       &lt;countryCode/&gt;  &#xd;
-      &lt;province&gt;湖南省&lt;/province&gt;  &#xd;
-      &lt;city&gt;长沙市&lt;/city&gt;  &#xd;
+      &lt;province&gt;浙江省&lt;/province&gt;  &#xd;
+      &lt;city&gt;杭州市&lt;/city&gt; &#xd;
+      &lt;area&gt;西湖区&lt;/area&gt; &#xd;
       &lt;area/&gt;  &#xd;
       &lt;town/&gt;  &#xd;
       &lt;detailAddress&gt;五一大道&lt;/detailAddress&gt; &#xd;
@@ -1169,8 +1175,8 @@
       &lt;orderLineNo&gt;213423400&lt;/orderLineNo&gt; &#xd;
       &lt;sourceOrderCode/&gt;  &#xd;
       &lt;subSourceOrderCode/&gt;  &#xd;
-      &lt;ownerCode&gt;YNF&lt;/ownerCode&gt;  &#xd;
-      &lt;itemCode&gt;120000&lt;/itemCode&gt;  &#xd;
+      &lt;ownerCode&gt;CS0714&lt;/ownerCode&gt;  &#xd;
+      &lt;itemCode&gt;XJ&lt;/itemCode&gt;  &#xd;
       &lt;itemId&gt;&lt;/itemId&gt;  &#xd;
       &lt;inventoryType&gt;ZP&lt;/inventoryType&gt;  &#xd;
       &lt;itemName/&gt;  &#xd;
@@ -1187,8 +1193,8 @@
       &lt;orderLineNo&gt;213423401&lt;/orderLineNo&gt;&#xd;
       &lt;sourceOrderCode/&gt;  &#xd;
       &lt;subSourceOrderCode/&gt;  &#xd;
-      &lt;ownerCode&gt;YNF&lt;/ownerCode&gt;  &#xd;
-      &lt;itemCode&gt;130000&lt;/itemCode&gt;  &#xd;
+      &lt;ownerCode&gt;CS0714&lt;/ownerCode&gt;  &#xd;
+      &lt;itemCode&gt;XJ&lt;/itemCode&gt;  &#xd;
       &lt;itemId&gt;&lt;/itemId&gt;  &#xd;
       &lt;inventoryType&gt;ZP&lt;/inventoryType&gt;  &#xd;
       &lt;itemName/&gt;  &#xd;
@@ -1212,7 +1218,650 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/api/qimen/wms/in?method=deliveryorder.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=YNF</stringProp>
+          <stringProp name="HTTPSampler.path">/api/qimen/wms/in?method=deliveryorder.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=CS0714</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="标准CRP接口创建出库单" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;details&quot;: [&#xd;
+{&#xd;
+&quot;shipmentDetail&quot;: {&#xd;
+&quot;companyCode&quot;: &quot;YNF&quot;,&#xd;
+&quot;itemCode&quot;: &quot;678000&quot;,&#xd;
+&quot;requestQty&quot;: 1.0,&#xd;
+&quot;shipmentCode&quot;: &quot;201905210009&quot;,&#xd;
+&quot;userDef1&quot;: &quot;983419315735&quot;,&#xd;
+&quot;userDef2&quot;: &quot;0102&quot;,&#xd;
+&quot;userDef3&quot;: &quot;42&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+}&#xd;
+}&#xd;
+],&#xd;
+&quot;header&quot;: {&#xd;
+&quot;shipmentHeader&quot;: {&#xd;
+&quot;allocateComplete&quot;: &quot;0&quot;,&#xd;
+&quot;codRequired&quot;: &quot;0&quot;,&#xd;
+&quot;code&quot;: &quot;2019092100012&quot;,&#xd;
+&quot;carrierCode&quot;:&quot;YTO&quot;,&#xd;
+&quot;primaryWaybillCode&quot;:&quot;805970484739481949&quot;,&#xd;
+&quot;companyCode&quot;: &quot;YNF&quot;,&#xd;
+&quot;erpOrderCode&quot;: &quot;T201903210005&quot;,&#xd;
+&quot;erpOrderId&quot;: &quot;6221204&quot;,&#xd;
+&quot;processType&quot;: &quot;NORMAL&quot;,&#xd;
+&quot;remark&quot;: &quot;备注&quot;,&#xd;
+&quot;shipTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToAddress1&quot;: &quot;广东省 惠州市 惠阳区 惠阳经济开发区广东省惠州市惠阳区三和经济开发区龙德科技有限公司&quot;,&#xd;
+&quot;shipToAttentionTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToCity&quot;: &quot;惠州市&quot;,&#xd;
+&quot;shipToDistrict&quot;: &quot;惠阳区&quot;,&#xd;
+&quot;shipToMobile&quot;: &quot;13246130981&quot;,&#xd;
+&quot;shipToName&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToState&quot;: &quot;广东省&quot;,&#xd;
+&quot;shipmentCategory1&quot;: &quot;10000&quot;,&#xd;
+&quot;shipmentNote&quot;: &quot;1564878787&quot;,&#xd;
+&quot;shipmentType&quot;: &quot;PTCK&quot;,&#xd;
+&quot;sourceErp&quot;: &quot;XTEP&quot;,&#xd;
+&quot;userDef6&quot;: &quot;10000&quot;,&#xd;
+&quot;userDef7&quot;: &quot;1&quot;,&#xd;
+&quot;shipmentCategory2&quot;: &quot;C类&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;test-W&quot;&#xd;
+}&#xd;
+}&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">edibz.crp.ops.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/edi/wms/in?api=wms_shipmnt_update</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+          <collectionProp name="Asserion.test_strings">
+            <stringProp name="-1205562660">&lt;response&gt;&lt;flag&gt;success&lt;/flag&gt;&lt;code&gt;200&lt;/code&gt;&lt;message&gt;Success&lt;/message&gt;&lt;/response&gt;</stringProp>
+            <stringProp name="-640125694">&lt;response&gt;&lt;flag&gt;success&lt;/flag&gt;&lt;code&gt;200&lt;/code&gt;&lt;msg&gt;接口下发成功&lt;/msg&gt;&lt;/response&gt;</stringProp>
+            <stringProp name="-110640886">&lt;response&gt;&lt;flag&gt;failure&lt;/flag&gt;&lt;code&gt;1&lt;/code&gt;&lt;msg&gt;未查询到仓库服务器地址&lt;/msg&gt;&lt;/response&gt;</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.custom_message"></stringProp>
+          <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">34</intProp>
+        </ResponseAssertion>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">1000</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">500</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="linux天翼云下单接口" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie管理器" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV 数据文件设置" enabled="true">
+          <stringProp name="filename">C:/中通云仓/jmeter/省市区.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">省,市,区</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="OrderCode随机变量" enabled="true">
+          <stringProp name="maximumValue">10000000000</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat"></stringProp>
+          <boolProp name="perThread">false</boolProp>
+          <stringProp name="randomSeed"></stringProp>
+          <stringProp name="variableName">OrderCode</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="planQty随机变量" enabled="true">
+          <stringProp name="variableName">planQty</stringProp>
+          <stringProp name="outputFormat"></stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="maximumValue">25</stringProp>
+          <stringProp name="randomSeed"></stringProp>
+          <boolProp name="perThread">false</boolProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="【接口平台】对外qimen接口创建出库单" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
+&lt;request&gt;&#xd;
+	&lt;deliveryOrder&gt;&#xd;
+		&lt;deliveryOrderCode&gt;${OrderCode}&lt;/deliveryOrderCode&gt;&#xd;
+		&lt;orderType&gt;JYCK&lt;/orderType&gt;&#xd;
+		&lt;warehouseCode&gt;010-002C&lt;/warehouseCode&gt;&#xd;
+		&lt;sourcePlatformCode&gt;&lt;/sourcePlatformCode&gt;&#xd;
+		&lt;sourcePlatformName&gt;拼多多&lt;/sourcePlatformName&gt;&#xd;
+		&lt;createTime&gt;2019-04-26 11:26:25&lt;/createTime&gt;&#xd;
+		&lt;placeOrderTime&gt;2019-04-24 15:28:20&lt;/placeOrderTime&gt;&#xd;
+		&lt;payTime&gt;2019-04-24 15:29:21&lt;/payTime&gt;&#xd;
+		&lt;operateTime&gt;2019-04-26 08:32:23&lt;/operateTime&gt;&#xd;
+		&lt;shopNick&gt;拼多多店铺&lt;/shopNick&gt;&#xd;
+		&lt;totalAmount&gt;5.80&lt;/totalAmount&gt;&#xd;
+		&lt;itemAmount&gt;5.80&lt;/itemAmount&gt;&#xd;
+		&lt;freight&gt;0.00&lt;/freight&gt;&#xd;
+		&lt;gotAmount&gt;5.80&lt;/gotAmount&gt;&#xd;
+		&lt;logisticsCode&gt;ZZTO&lt;/logisticsCode&gt;&#xd;
+		&lt;logisticsName&gt;顺丰快递&lt;/logisticsName&gt;&#xd;
+		&lt;remark&gt;23453&lt;/remark&gt;&#xd;
+		&lt;senderInfo&gt;&#xd;
+			&lt;name&gt;老家大厨&lt;/name&gt;&#xd;
+			&lt;mobile&gt;13818376630&lt;/mobile&gt;&#xd;
+			&lt;province&gt;湖北省&lt;/province&gt;&#xd;
+			&lt;city&gt;武汉市&lt;/city&gt;&#xd;
+			&lt;area&gt;拱墅区&lt;/area&gt;&#xd;
+			&lt;detailAddress&gt;湖北武汉中通转运中心&lt;/detailAddress&gt;&#xd;
+		&lt;/senderInfo&gt;&#xd;
+		&lt;receiverInfo&gt;&#xd;
+			&lt;name&gt;原素&lt;/name&gt;&#xd;
+			&lt;mobile&gt;13955289675&lt;/mobile&gt;&#xd;
+			&lt;province&gt;${省}&lt;/province&gt;&#xd;
+			&lt;city&gt;${市}&lt;/city&gt;&#xd;
+			&lt;area&gt;${区}&lt;/area&gt;&#xd;
+			&lt;detailAddress&gt;西湖大道01&lt;/detailAddress&gt;&#xd;
+		&lt;/receiverInfo&gt;&#xd;
+		&lt;isUrgency&gt;N&lt;/isUrgency&gt;&#xd;
+		&lt;invoiceFlag&gt;N&lt;/invoiceFlag&gt;&#xd;
+		&lt;sellerMessage&gt;26号发货&lt;/sellerMessage&gt;&#xd;
+		&lt;extendProps&gt; &#xd;
+&#xd;
+			&lt;key4&gt;7&lt;/key4&gt; &#xd;
+		&#xd;
+&#xd;
+		&lt;/extendProps&gt; &#xd;
+		&#xd;
+	&lt;/deliveryOrder&gt;&#xd;
+	&lt;orderLines&gt;&#xd;
+		&lt;orderLine&gt;&#xd;
+			&lt;orderLineNo&gt;1&lt;/orderLineNo&gt;&#xd;
+			&lt;sourceOrderCode&gt;190424-328527381213467&lt;/sourceOrderCode&gt;&#xd;
+			&lt;subSourceOrderCode&gt;190424-3285273812134672521205470&lt;/subSourceOrderCode&gt;&#xd;
+			&lt;ownerCode&gt;CS0714&lt;/ownerCode&gt;&#xd;
+			&lt;itemCode&gt;XJ&lt;/itemCode&gt;&#xd;
+			&lt;itemId&gt;XJ&lt;/itemId&gt;&#xd;
+			&lt;inventoryType&gt;ZP&lt;/inventoryType&gt;&#xd;
+			&lt;itemName&gt;香蕉&lt;/itemName&gt;&#xd;
+			&lt;planQty&gt;${planQty}&lt;/planQty&gt;&#xd;
+			&lt;actualPrice&gt;16.80&lt;/actualPrice&gt;&#xd;
+			&#xd;
+			&#xd;
+		&lt;/orderLine&gt;&#xd;
+		&#xd;
+	&lt;/orderLines&gt;&#xd;
+&lt;/request&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">125.124.23.170</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/qimen/wms/in?method=stockout.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key=&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=jkyc</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1205562660">&lt;response&gt;&lt;flag&gt;success&lt;/flag&gt;&lt;code&gt;200&lt;/code&gt;&lt;message&gt;Success&lt;/message&gt;&lt;/response&gt;</stringProp>
+              <stringProp name="-640125694">&lt;response&gt;&lt;flag&gt;success&lt;/flag&gt;&lt;code&gt;200&lt;/code&gt;&lt;msg&gt;接口下发成功&lt;/msg&gt;&lt;/response&gt;</stringProp>
+              <stringProp name="507442498">&lt;response&gt;&lt;flag&gt;failure&lt;/flag&gt;&lt;code&gt;480&lt;/code&gt;&lt;message&gt;MSG_ERP_0004&lt;/message&gt;&lt;/response&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">34</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="【接口平台】对外edi标准接口创建出库单" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;details&quot;: [&#xd;
+{&#xd;
+&quot;shipmentDetail&quot;: {&#xd;
+&quot;companyCode&quot;: &quot;CS0714&quot;,&#xd;
+&quot;itemCode&quot;: &quot;XJ&quot;,&#xd;
+&quot;requestQty&quot;: 3.0,&#xd;
+&quot;shipmentCode&quot;: &quot;201906110016&quot;,&#xd;
+&quot;userDef1&quot;: &quot;983419315735&quot;,&#xd;
+&quot;userDef2&quot;: &quot;0102&quot;,&#xd;
+&quot;userDef3&quot;: &quot;42&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;570-036C&quot;&#xd;
+}&#xd;
+}&#xd;
+],&#xd;
+&quot;header&quot;: {&#xd;
+&quot;shipmentHeader&quot;: {&#xd;
+&quot;allocateComplete&quot;: &quot;0&quot;,&#xd;
+&quot;codRequired&quot;: &quot;0&quot;,&#xd;
+&quot;code&quot;: &quot;201906110016&quot;,&#xd;
+&quot;companyCode&quot;: &quot;CS0714&quot;,&#xd;
+&quot;erpOrderCode&quot;: &quot;T201904110007&quot;,&#xd;
+&quot;erpOrderId&quot;: &quot;6221204&quot;,&#xd;
+&quot;processType&quot;: &quot;NORMAL&quot;,&#xd;
+&quot;remark&quot;: &quot;备注&quot;,&#xd;
+&quot;shipTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToAddress1&quot;: &quot;广东省 惠州市 惠阳区 惠阳经济开发区广东省惠州市惠阳区三和经济开发区龙德科技有限公司&quot;,&#xd;
+&quot;shipToAttentionTo&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToCity&quot;: &quot;杭州市&quot;,&#xd;
+&quot;shipToDistrict&quot;: &quot;拱墅区&quot;,&#xd;
+&quot;shipToMobile&quot;: &quot;13246130981&quot;,&#xd;
+&quot;shipToName&quot;: &quot;覃将&quot;,&#xd;
+&quot;shipToState&quot;: &quot;浙江省&quot;,&#xd;
+&quot;shipmentCategory1&quot;: &quot;10000&quot;,&#xd;
+&quot;shipmentNote&quot;: &quot;1564878787&quot;,&#xd;
+&quot;shipmentType&quot;: &quot;JYCK&quot;,&#xd;
+&quot;carrierCode&quot;:&quot;ZTO1&quot;,&#xd;
+&quot;sourceErp&quot;: &quot;erp&quot;,&#xd;
+&quot;userDef6&quot;: &quot;10000&quot;,&#xd;
+&quot;userDef7&quot;: &quot;1&quot;,&#xd;
+&quot;shipmentCategory2&quot;: &quot;C类&quot;,&#xd;
+&quot;warehouseCode&quot;: &quot;570-036C&quot;&#xd;
+}&#xd;
+}&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/edi/wms/in?api=wms.shipment.update&amp;appkey=58125946&amp;customerId=CS0714</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="【接口平台】对外qimen接口创建发库单" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xd;
+&#xd;
+&lt;request&gt; &#xd;
+  &lt;deliveryOrder&gt; &#xd;
+    &lt;deliveryOrderCode&gt;201906057028&lt;/deliveryOrderCode&gt;  &#xd;
+    &lt;preDeliveryOrderCode&gt;F201906057028&lt;/preDeliveryOrderCode&gt;  &#xd;
+    &lt;preDeliveryOrderId&gt;5241263&lt;/preDeliveryOrderId&gt;  &#xd;
+    &lt;orderType&gt;JYCK&lt;/orderType&gt;  &#xd;
+    &lt;warehouseCode&gt;570-036C&lt;/warehouseCode&gt;  &#xd;
+    &lt;orderFlag&gt;COD&lt;/orderFlag&gt;  &#xd;
+    &lt;sourcePlatformCode&gt;PDD&lt;/sourcePlatformCode&gt;  &#xd;
+    &lt;sourcePlatformName/&gt;  &#xd;
+    &lt;createTime&gt;2019-01-08 20:26:32&lt;/createTime&gt;  &#xd;
+    &lt;placeOrderTime&gt;2019-01-08 20:26:32&lt;/placeOrderTime&gt;  &#xd;
+    &lt;payTime/&gt;  &#xd;
+    &lt;payNo/&gt;  &#xd;
+    &lt;operatorCode/&gt;  &#xd;
+    &lt;operatorName/&gt;  &#xd;
+    &lt;operateTime&gt;2019-01-08 20:26:32&lt;/operateTime&gt;  &#xd;
+    &lt;shopNick&gt;鞋柜&lt;/shopNick&gt;  &#xd;
+    &lt;sellerNick/&gt;  &#xd;
+    &lt;buyerNick/&gt;  &#xd;
+    &lt;totalAmount/&gt;  &#xd;
+    &lt;itemAmount/&gt;  &#xd;
+    &lt;discountAmount/&gt;  &#xd;
+    &lt;freight/&gt;  &#xd;
+    &lt;arAmount/&gt;  &#xd;
+    &lt;gotAmount/&gt;  &#xd;
+    &lt;serviceFee/&gt;  &#xd;
+    &lt;logisticsCode&gt;ZTO2&lt;/logisticsCode&gt;  &#xd;
+    &lt;logisticsName/&gt;  &#xd;
+    &lt;expressCode/&gt;  &#xd;
+    &lt;logisticsAreaCode/&gt;  &#xd;
+    &lt;deliveryRequirements&gt; &#xd;
+      &lt;scheduleType/&gt;  &#xd;
+      &lt;scheduleDay/&gt;  &#xd;
+      &lt;scheduleStartTime/&gt;  &#xd;
+      &lt;scheduleEndTime/&gt;  &#xd;
+      &lt;deliveryType/&gt; &#xd;
+    &lt;/deliveryRequirements&gt;  &#xd;
+    &lt;senderInfo&gt; &#xd;
+      &lt;company/&gt;  &#xd;
+      &lt;name&gt;测试01&lt;/name&gt;  &#xd;
+      &lt;zipCode/&gt;  &#xd;
+      &lt;tel/&gt;  &#xd;
+      &lt;mobile&gt;18652469335&lt;/mobile&gt;  &#xd;
+      &lt;email/&gt;  &#xd;
+      &lt;countryCode/&gt;  &#xd;
+      &lt;province&gt;浙江省&lt;/province&gt;  &#xd;
+      &lt;city&gt;杭州市&lt;/city&gt;  &#xd;
+      &lt;area/&gt;  &#xd;
+      &lt;town/&gt;  &#xd;
+      &lt;detailAddress&gt;临平街道&lt;/detailAddress&gt; &#xd;
+    &lt;/senderInfo&gt;  &#xd;
+    &lt;receiverInfo&gt; &#xd;
+      &lt;company/&gt;  &#xd;
+      &lt;name&gt;王小二&lt;/name&gt;  &#xd;
+      &lt;zipCode/&gt;  &#xd;
+      &lt;tel/&gt;  &#xd;
+      &lt;mobile&gt;15968547123&lt;/mobile&gt;  &#xd;
+      &lt;email/&gt;  &#xd;
+      &lt;countryCode/&gt;  &#xd;
+      &lt;province&gt;浙江省&lt;/province&gt;  &#xd;
+      &lt;city&gt;杭州市&lt;/city&gt; &#xd;
+      &lt;area&gt;西湖区&lt;/area&gt; &#xd;
+      &lt;area/&gt;  &#xd;
+      &lt;town/&gt;  &#xd;
+      &lt;detailAddress&gt;五一大道&lt;/detailAddress&gt; &#xd;
+    &lt;/receiverInfo&gt;  &#xd;
+    &lt;isUrgency&gt;N&lt;/isUrgency&gt;  &#xd;
+    &lt;invoiceFlag&gt;N&lt;/invoiceFlag&gt;  &#xd;
+    &lt;invoices&gt; &#xd;
+      &lt;invoice&gt; &#xd;
+        &lt;type&gt;INVOICE&lt;/type&gt;  &#xd;
+        &lt;header/&gt;  &#xd;
+        &lt;amount/&gt;  &#xd;
+        &lt;content/&gt;  &#xd;
+        &lt;detail&gt; &#xd;
+          &lt;items&gt; &#xd;
+            &lt;item&gt; &#xd;
+              &lt;itemName/&gt;  &#xd;
+              &lt;unit/&gt;  &#xd;
+              &lt;price/&gt;  &#xd;
+              &lt;quantity/&gt;  &#xd;
+              &lt;amount/&gt; &#xd;
+            &lt;/item&gt; &#xd;
+          &lt;/items&gt; &#xd;
+        &lt;/detail&gt; &#xd;
+      &lt;/invoice&gt; &#xd;
+    &lt;/invoices&gt;  &#xd;
+    &lt;insuranceFlag/&gt;  &#xd;
+    &lt;insurance&gt; &#xd;
+      &lt;type/&gt;  &#xd;
+      &lt;amount/&gt; &#xd;
+    &lt;/insurance&gt;  &#xd;
+    &lt;buyerMessage/&gt;  &#xd;
+    &lt;sellerMessage/&gt;  &#xd;
+    &lt;remark/&gt; &#xd;
+  &lt;/deliveryOrder&gt;  &#xd;
+  &lt;orderLines&gt; &#xd;
+    &lt;orderLine&gt; &#xd;
+      &lt;orderLineNo&gt;213423400&lt;/orderLineNo&gt; &#xd;
+      &lt;sourceOrderCode/&gt;  &#xd;
+      &lt;subSourceOrderCode/&gt;  &#xd;
+      &lt;ownerCode&gt;CS0714&lt;/ownerCode&gt;  &#xd;
+      &lt;itemCode&gt;XJ&lt;/itemCode&gt;  &#xd;
+      &lt;itemId&gt;&lt;/itemId&gt;  &#xd;
+      &lt;inventoryType&gt;ZP&lt;/inventoryType&gt;  &#xd;
+      &lt;itemName/&gt;  &#xd;
+      &lt;extCode/&gt;  &#xd;
+      &lt;planQty&gt;1&lt;/planQty&gt;  &#xd;
+      &lt;retailPrice/&gt;  &#xd;
+      &lt;actualPrice/&gt;  &#xd;
+      &lt;discountAmount/&gt;  &#xd;
+      &lt;batchCode/&gt;  &#xd;
+      &lt;productDate/&gt;  &#xd;
+      &lt;expireDate/&gt; &#xd;
+    &lt;/orderLine&gt; &#xd;
+     &lt;orderLine&gt; &#xd;
+      &lt;orderLineNo&gt;213423401&lt;/orderLineNo&gt;&#xd;
+      &lt;sourceOrderCode/&gt;  &#xd;
+      &lt;subSourceOrderCode/&gt;  &#xd;
+      &lt;ownerCode&gt;CS0714&lt;/ownerCode&gt;  &#xd;
+      &lt;itemCode&gt;XJ&lt;/itemCode&gt;  &#xd;
+      &lt;itemId&gt;&lt;/itemId&gt;  &#xd;
+      &lt;inventoryType&gt;ZP&lt;/inventoryType&gt;  &#xd;
+      &lt;itemName/&gt;  &#xd;
+      &lt;extCode/&gt;  &#xd;
+      &lt;planQty&gt;1&lt;/planQty&gt;  &#xd;
+      &lt;retailPrice/&gt;  &#xd;
+      &lt;actualPrice/&gt;  &#xd;
+      &lt;discountAmount/&gt;  &#xd;
+      &lt;batchCode/&gt;  &#xd;
+      &lt;productDate/&gt;  &#xd;
+      &lt;expireDate/&gt; &#xd;
+    &lt;/orderLine&gt; &#xd;
+  &lt;/orderLines&gt; &#xd;
+&lt;/request&gt;&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">zopgw.qa.ztocwst.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+          <stringProp name="HTTPSampler.path">/api/qimen/wms/in?method=deliveryorder.create&amp;timestamp=2018-11-21 00:00:00&amp;format=xml&amp;app_key&amp;v=1.0&amp;sign&amp;sign_method=md5&amp;customerId=CS0714</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1331,196 +1980,141 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="事务控制器" enabled="false">
-          <boolProp name="TransactionController.includeTimers">false</boolProp>
-          <boolProp name="TransactionController.parent">true</boolProp>
-        </TransactionController>
-        <hashTree>
-          <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie管理器" enabled="true">
-            <collectionProp name="CookieManager.cookies"/>
-            <boolProp name="CookieManager.clearEachIteration">false</boolProp>
-          </CookieManager>
-          <hashTree/>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
-            <collectionProp name="HeaderManager.headers">
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">origin</stringProp>
-                <stringProp name="Header.value">http://wms.crp.ops.com</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Content-Type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Cookie</stringProp>
-                <stringProp name="Header.value">user=000465; locale=zh; sso=; ssoToken=; ssoApp=; ssoClient=; token=c832207d51d347f08e6dd1fd30e51bba; db=ttx-xwms-test; client=36ad4bcd5c8c475793fedce323999a74</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">Host</stringProp>
-                <stringProp name="Header.value">wms.crp.ops.com</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">X-CLIENT</stringProp>
-                <stringProp name="Header.value">36ad4bcd5c8c475793fedce323999a74</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">x-params</stringProp>
-                <stringProp name="Header.value">{&quot;warehouse&quot;:&quot;test-W&quot;,&quot;orgCode&quot;:&quot;GZHSC&quot;,&quot;user&quot;:&quot;000465&quot;}</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">X-Token</stringProp>
-                <stringProp name="Header.value">c832207d51d347f08e6dd1fd30e51bba</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">X-User</stringProp>
-                <stringProp name="Header.value">000465</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">X-Bill</stringProp>
-                <stringProp name="Header.value">shipment_header</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name">X-DB</stringProp>
-                <stringProp name="Header.value">ttx-xwms-test</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name"></stringProp>
-                <stringProp name="Header.value"></stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Header">
-                <stringProp name="Header.name"></stringProp>
-                <stringProp name="Header.value"></stringProp>
-              </elementProp>
-            </collectionProp>
-          </HeaderManager>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="创建W订单" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-	&quot;warehouseCode&quot;: &quot;test-W&quot;,&#xd;
-	&quot;processType&quot;: &quot;NORMAL&quot;,&#xd;
-	&quot;leadingSts&quot;: &quot;100&quot;,&#xd;
-	&quot;trailingSts&quot;: &quot;100&quot;,&#xd;
-	&quot;shipToState&quot;: &quot;山东省&quot;,&#xd;
-	&quot;scheduledShipDate&quot;: null,&#xd;
-	&quot;actualShipDateTime&quot;: null,&#xd;
-	&quot;actualDeliveryDate&quot;: null,&#xd;
-	&quot;created&quot;: &quot;2019-09-05 10:40:51&quot;,&#xd;
-	&quot;lastUpdated&quot;: &quot;2019-09-05 10:41:30&quot;,&#xd;
-	&quot;id&quot;: 5506305,&#xd;
-	&quot;companyCode&quot;: &quot;YNF&quot;,&#xd;
-	&quot;loadId&quot;: 0,&#xd;
-	&quot;code&quot;: &quot;201909051058111&quot;,&#xd;
-	&quot;primaryWaybillCode&quot;: &quot;73223000326346&quot;,&#xd;
-	&quot;erpOrderCode&quot;: &quot;&quot;,&#xd;
-	&quot;erpOrderId&quot;: 0,&#xd;
-	&quot;shipmentType&quot;: &quot;JYCK&quot;,&#xd;
-	&quot;route&quot;: &quot;&quot;,&#xd;
-	&quot;sourcePlatform&quot;: &quot;&quot;,&#xd;
-	&quot;shipTo&quot;: &quot;&quot;,&#xd;
-	&quot;shipToName&quot;: &quot;啊测&quot;,&#xd;
-	&quot;shipToAddress1&quot;: &quot;泰山好地方001&quot;,&#xd;
-	&quot;shipToAddress2&quot;: &quot;&quot;,&#xd;
-	&quot;shipToDistrict&quot;: &quot;&quot;,&#xd;
-	&quot;shipToCity&quot;: &quot;&quot;,&#xd;
-	&quot;shipToCountry&quot;: &quot;&quot;,&#xd;
-	&quot;shipToPostalCode&quot;: &quot;&quot;,&#xd;
-	&quot;shipToAttentionTo&quot;: &quot;测试小哥&quot;,&#xd;
-	&quot;shipToPhoneNum&quot;: &quot;&quot;,&#xd;
-	&quot;shipToMobile&quot;: &quot;18639152655&quot;,&#xd;
-	&quot;shipToEmailAddress&quot;: &quot;&quot;,&#xd;
-	&quot;priority&quot;: 0,&#xd;
-	&quot;deliveryNote&quot;: &quot;&quot;,&#xd;
-	&quot;rejectionNote&quot;: &quot;&quot;,&#xd;
-	&quot;waveId&quot;: &quot;0&quot;,&#xd;
-	&quot;allocateComplete&quot;: &quot;1&quot;,&#xd;
-	&quot;totalWeight&quot;: 0,&#xd;
-	&quot;totalQty&quot;: &quot;0&quot;,&#xd;
-	&quot;totalVolume&quot;: 0,&#xd;
-	&quot;totalLines&quot;: 0,&#xd;
-	&quot;totalContainers&quot;: 0,&#xd;
-	&quot;totalCases&quot;: 0,&#xd;
-	&quot;totalValue&quot;: 0,&#xd;
-	&quot;carrierCode&quot;: &quot;PDDZTO&quot;,&#xd;
-	&quot;carrierService&quot;: &quot;&quot;,&#xd;
-	&quot;backOrderId&quot;: 0,&#xd;
-	&quot;lastWaveId&quot;: &quot;0&quot;,&#xd;
-	&quot;groupNum&quot;: 0,&#xd;
-	&quot;groupIndex&quot;: 0,&#xd;
-	&quot;signValue&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentCategory1&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentCategory2&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentCategory3&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentCategory4&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentCategory5&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentCategory6&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentCategory7&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentCategory8&quot;: &quot;&quot;,&#xd;
-	&quot;shipmentNote&quot;: &quot;&quot;,&#xd;
-	&quot;stopSeq&quot;: 0,&#xd;
-	&quot;codRequired&quot;: &quot;1&quot;,&#xd;
-	&quot;codValue&quot;: 0,&#xd;
-	&quot;allowConsolidate&quot;: &quot;1&quot;,&#xd;
-	&quot;consolidated&quot;: &quot;1&quot;,&#xd;
-	&quot;invoiceRequired&quot;: &quot;1&quot;,&#xd;
-	&quot;invoiceHeader&quot;: &quot;&quot;,&#xd;
-	&quot;invoiceContent&quot;: &quot;&quot;,&#xd;
-	&quot;uploadRequired&quot;: &quot;1&quot;,&#xd;
-	&quot;uploadBatch&quot;: &quot;&quot;,&#xd;
-	&quot;statusFlow&quot;: &quot;&quot;,&#xd;
-	&quot;storeCode&quot;: &quot;&quot;,&#xd;
-	&quot;storeName&quot;: &quot;&quot;,&#xd;
-	&quot;secondWaybillCodes&quot;: &quot;&quot;,&#xd;
-	&quot;shortAddress&quot;: &quot;&quot;,&#xd;
-	&quot;createdBy&quot;: &quot;000465&quot;,&#xd;
-	&quot;lastUpdatedBy&quot;: &quot;000465&quot;,&#xd;
-	&quot;version&quot;: 1,&#xd;
-	&quot;lockCode&quot;: &quot;&quot;,&#xd;
-	&quot;shortPick&quot;: 0,&#xd;
-	&quot;shortAlloc&quot;: 0,&#xd;
-	&quot;remark&quot;: &quot;&quot;,&#xd;
-	&quot;shippingMethod&quot;: &quot;0&quot;,&#xd;
-	&quot;logisticsPaymentMethod&quot;: &quot;0&quot;,&#xd;
-	&quot;isStockout&quot;: 0,&#xd;
-	&quot;pickGoodsModel&quot;: 111,&#xd;
-	&quot;goodsCategory&quot;: 0,&#xd;
-	&quot;insuredAmount&quot;: 2000,&#xd;
-	&quot;encryptionShipToAddress1&quot;: &quot;泰山好地方001&quot;,&#xd;
-	&quot;encryptionShipToAttentionTo&quot;: &quot;测***&quot;,&#xd;
-	&quot;encryptionShipToMobile&quot;: &quot;186****2655&quot;,&#xd;
-	&quot;pended&quot;: false,&#xd;
-	&quot;encryptionShipToName&quot;: &quot;啊*&quot;,&#xd;
-	&quot;standardType&quot;: &quot;&quot;,&#xd;
-	&quot;totalSku&quot;: &quot;0&quot;,&#xd;
-	&quot;entityId&quot;: 5506305,&#xd;
-	&quot;cacheId&quot;: 5506305&#xd;
-}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">wms.crp.ops.com</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/rest/cbt/shipment_header</stringProp>
-            <stringProp name="HTTPSampler.method">PUT</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree/>
-        </hashTree>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">1000</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ResponseTimesOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Response Times Over Time" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+          <longProp name="interval_grouping">500</longProp>
+          <boolProp name="graph_aggregated">false</boolProp>
+          <stringProp name="include_sample_labels"></stringProp>
+          <stringProp name="exclude_sample_labels"></stringProp>
+          <stringProp name="start_offset"></stringProp>
+          <stringProp name="end_offset"></stringProp>
+          <boolProp name="include_checkbox_state">false</boolProp>
+          <boolProp name="exclude_checkbox_state">false</boolProp>
+        </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="中通订阅接受接口" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="中通订阅接受接口" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1620,6 +2214,7 @@
             </value>
           </objProp>
           <stringProp name="filename"></stringProp>
+          <boolProp name="saveHeaders">false</boolProp>
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
@@ -2026,13 +2621,68 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="true">
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器1111" enabled="true">
           <boolProp name="displayJMeterProperties">false</boolProp>
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="事务控制器" enabled="true">
+          <boolProp name="TransactionController.parent">true</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器1" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugSampler>
+          <hashTree/>
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器2" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugSampler>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
